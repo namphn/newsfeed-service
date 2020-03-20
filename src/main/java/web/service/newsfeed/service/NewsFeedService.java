@@ -1,0 +1,66 @@
+package web.service.newsfeed.service;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.protobuf.InvalidProtocolBufferException;
+import com.google.protobuf.util.JsonFormat;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import web.service.grpc.newsfeed.*;
+import web.service.newsfeed.model.Post;
+import web.service.newsfeed.model.Status;
+import web.service.newsfeed.repository.PostsRepostiory;
+
+import java.util.List;
+
+@Service
+@Transactional
+public class NewsFeedService {
+
+    private final PostsRepostiory repository;
+
+    public NewsFeedService(PostsRepostiory repository) {
+        this.repository = repository;
+    }
+
+    public GetNewsFeedResponse getNewsFees(GetNewsFeedRequest request){
+        List<web.service.newsfeed.model.Post> posts =  repository.findAll();
+        web.service.newsfeed.model.response.GetNewsFeedResponse getNewsFeedResponse
+                = new web.service.newsfeed.model.response.GetNewsFeedResponse(posts);
+        GetNewsFeedResponse.Builder response = GetNewsFeedResponse.newBuilder();
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            String json = mapper.writeValueAsString(getNewsFeedResponse);
+
+            System.out.println(json);
+            JsonFormat.parser().ignoringUnknownFields().merge(json, response);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        } catch (InvalidProtocolBufferException e) {
+            e.printStackTrace();
+        }
+
+        return response.build();
+    }
+
+    public SaveNewPostResponse saveNewPost(web.service.newsfeed.model.Post post){
+        Post newPost = repository.save(post);
+        SaveNewPostResponse.Builder response = SaveNewPostResponse.newBuilder();
+        if(newPost != null) {
+            response.setStatus(Status.SAVED);
+        } else {
+            response.setStatus(Status.CAN_NOT_SAVE);
+        }
+        return response.build();
+    }
+
+    public LikeResponse like(LikeRequest request){
+        Post post = repository.findAllById(request.getPostId());
+        post.addNewLike(request.getUserId());
+        repository.save(post);
+        LikeResponse.Builder response = LikeResponse.newBuilder();
+        response.setStatus(Status.LIKED);
+        return response.build();
+    }
+
+}
