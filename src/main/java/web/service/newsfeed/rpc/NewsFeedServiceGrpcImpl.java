@@ -32,4 +32,22 @@ public class NewsFeedServiceGrpcImpl extends NewsFeedServiceGrpc.NewsFeedService
         responseObserver.onNext(newsFeedService.like(request));
         responseObserver.onCompleted();
     }
+
+    @Override
+    public void share(ShareRequest request, StreamObserver<ShareResponse> responseObserver) {
+        responseObserver.onNext(newsFeedService.share(request));
+        responseObserver.onCompleted();
+    }
+
+    @Override
+    public void comment(CommentRequest request, StreamObserver<CommentResponse> responseObserver) {
+        responseObserver.onNext(newsFeedService.comment(request));
+        responseObserver.onCompleted();
+    }
+
+    @Override
+    public void tag(TagRequest request, StreamObserver<TagResponse> responseObserver) {
+        responseObserver.onNext(newsFeedService.tag(request));
+        responseObserver.onCompleted();
+    }
 }

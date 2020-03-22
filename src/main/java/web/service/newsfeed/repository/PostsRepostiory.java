@@ -12,5 +12,5 @@ public interface PostsRepostiory extends MongoRepository<Post, Long> {
 
     <S extends Post> S save(S s);
 
-    Post findAllById(long id);
+    Post findAllById(String id);
 }

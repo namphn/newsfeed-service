@@ -62,5 +62,31 @@ public class NewsFeedService {
         response.setStatus(Status.LIKED);
         return response.build();
     }
+    public ShareResponse share(ShareRequest request){
+        Post post = repository.findAllById(request.getPostId());
+        post.addNewShare(request.getUserId(), request.getContent());
+        repository.save(post);
+        ShareResponse.Builder response = ShareResponse.newBuilder();
+        response.setStatus(Status.SHARED);
+        return response.build();
+    }
+
+    public CommentResponse comment(CommentRequest request){
+        Post post = repository.findAllById(request.getPostId());
+        post.addNewComment(request);
+        repository.save(post);
+        CommentResponse.Builder response = CommentResponse.newBuilder();
+        response.setStatus(Status.COMMENTED);
+        return response.build();
+    }
+
+    public TagResponse tag(TagRequest request){
+        Post post = repository.findAllById(request.getPostId());
+        post.addNewTag(request);
+        repository.save(post);
+        TagResponse.Builder response = TagResponse.newBuilder();
+        response.setStatus(Status.ADDED);
+        return response.build();
+    }
 
 }

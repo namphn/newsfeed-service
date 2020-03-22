@@ -1,11 +1,11 @@
 package web.service.newsfeed.model;
 
-import web.service.user.model.User;
+import lombok.AllArgsConstructor;
 
-
+@AllArgsConstructor
 public class Comment {
     private String content;
-    private long userId;
+    private String userId;
 
     public Comment(web.service.grpc.newsfeed.Comment comment){
         this.content = comment.getContent();
