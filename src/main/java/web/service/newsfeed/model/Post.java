@@ -26,14 +26,14 @@ public class Post {
     public Post(web.service.grpc.newsfeed.Post post){
         this.id = post.getId();
         this.content = post.getContent();
-        List<Comment> comments = new ArrayList<>();
+        List<Comment> comments = new ArrayList<Comment>();
         for(int i=0; i<post.getCommentsList().size(); i++){
             Comment comment = new Comment(post.getComments(i));
             comments.add(comment);
         }
         this.comments = comments;
         this.likes = post.getLikesList();
-        this.shares = new ArrayList<>();
+        this.shares = new ArrayList<Share>();
         for(int i=0; i<post.getSharesList().size(); i++){
             Share share = new Share(post.getSharesList().get(i));
             this.shares.add(share);

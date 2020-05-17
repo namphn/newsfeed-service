@@ -1,0 +1,10 @@
+web\service\newsfeed\model\Post.class
+web\service\newsfeed\model\Share.class
+web\service\newsfeed\model\Comment.class
+web\service\newsfeed\model\Status.class
+web\service\newsfeed\model\response\GetNewsFeedResponse.class
+web\service\newsfeed\repository\PostsRepostiory.class
+web\service\newsfeed\service\NewsFeedService.class
+web\service\newsfeed\config\MongoConfig.class
+web\service\newsfeed\rpc\NewsFeedServiceGrpcImpl.class
+web\service\newsfeed\NewsFeedApplication.class

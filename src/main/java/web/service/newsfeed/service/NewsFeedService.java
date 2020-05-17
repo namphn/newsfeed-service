@@ -24,15 +24,17 @@ public class NewsFeedService {
     }
 
     public GetNewsFeedResponse getNewsFees(GetNewsFeedRequest request){
+
         List<web.service.newsfeed.model.Post> posts =  repository.findAll();
+
         web.service.newsfeed.model.response.GetNewsFeedResponse getNewsFeedResponse
                 = new web.service.newsfeed.model.response.GetNewsFeedResponse(posts);
+
         GetNewsFeedResponse.Builder response = GetNewsFeedResponse.newBuilder();
         ObjectMapper mapper = new ObjectMapper();
         try {
             String json = mapper.writeValueAsString(getNewsFeedResponse);
 
-            System.out.println(json);
             JsonFormat.parser().ignoringUnknownFields().merge(json, response);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
@@ -89,4 +91,7 @@ public class NewsFeedService {
         return response.build();
     }
 
+    public List<Post> getAllNewsFeed() {
+        return this.repository.findAll();
+    }
 }
