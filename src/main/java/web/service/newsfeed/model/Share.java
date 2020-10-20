@@ -10,10 +10,4 @@ import lombok.NoArgsConstructor;
 public class Share {
     private String userId;
     private String content;
-
-    public Share(web.service.grpc.newsfeed.Share share){
-        this.userId = share.getUserId();
-        this.content = share.getContent();
-    }
-
 }

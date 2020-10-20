@@ -1,14 +1,17 @@
 package web.service.newsfeed.model;
-
 import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Data
 @AllArgsConstructor
+@NoArgsConstructor
+@Document
 public class Comment {
+    @Id
+    private String commentId;
     private String content;
     private String userId;
-
-    public Comment(web.service.grpc.newsfeed.Comment comment){
-        this.content = comment.getContent();
-        this.userId = comment.getUserId();
-    }
 }

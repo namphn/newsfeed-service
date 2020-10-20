@@ -17,12 +17,11 @@ public class MongoConfig extends AbstractMongoConfiguration {
 
     @Override
     protected String getDatabaseName() {
-        return "newsfeed";
+        return "news_feed";
     }
 
     @Override
     public MongoTemplate mongoTemplate(){
-        return new MongoTemplate(mongoClient(),"newsfeed");
+        return new MongoTemplate(mongoClient(),getDatabaseName());
     }
-
 }
