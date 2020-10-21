@@ -7,10 +7,7 @@ import web.service.newsfeed.model.Post;
 import java.util.List;
 
 @Repository
-public interface PostsRepostiory extends MongoRepository<Post, Long> {
+public interface PostsRepository extends MongoRepository<Post, String> {
     List<Post> findAll();
-
-    <S extends Post> S save(S s);
-
-    Post findAllById(String id);
+    Post getPostByUserId(String userId);
 }
