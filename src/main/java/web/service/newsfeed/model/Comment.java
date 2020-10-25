@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 @Data
@@ -16,5 +17,7 @@ public class Comment {
     private String commentId;
     private String content;
     private String userId;
+    private String userAvatar;
+    private LocalDateTime commentTime;
     private ArrayList<ChildComment> childComments;
 }

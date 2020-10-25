@@ -2,6 +2,7 @@ syntax = "proto3";
 option java_multiple_files = true;
 option java_generic_services = true;
 option java_package = "web.service.newsfeed.rpc";
+import "google/protobuf/timestamp.proto";
 
 message GetNewsFeedRequest {
   string userId = 1;
@@ -16,7 +17,8 @@ message Comment {
   string userId = 1;
   string content = 2;
   string userAvatar = 3;
-  repeated ChildComment childComments = 4;
+  google.protobuf.Timestamp commentTime = 4;
+  repeated ChildComment childComments = 5;
 }
 
 message Share {

@@ -6,8 +6,14 @@ import web.service.newsfeed.model.Post;
 
 import java.util.List;
 
+@SuppressWarnings("ALL")
 @Repository
 public interface PostsRepository extends MongoRepository<Post, String> {
     List<Post> findAll();
-    Post getPostByUserId(String userId);
+
+    /**
+     * @param userId
+     * @return Post
+     */
+    Post findDistinctFirstByUserIdAndOrderByPostTimeDesc(String userId);
 }
