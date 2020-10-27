@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import web.service.newsfeed.rpc.FollowRpcServiceGrpc;
 import web.service.newsfeed.rpc.GetFollowerAndFollowingRequest;
 import web.service.newsfeed.rpc.GetFollowingResponse;
-
 import java.util.ArrayList;
 import java.util.List;
 

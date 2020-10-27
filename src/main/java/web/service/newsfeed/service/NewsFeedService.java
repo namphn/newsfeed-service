@@ -1,6 +1,5 @@
 package web.service.newsfeed.service;
 
-import javafx.geometry.Pos;
 import org.springframework.stereotype.Service;
 import web.service.newsfeed.model.Comment;
 import web.service.newsfeed.model.Post;
@@ -10,6 +9,7 @@ import web.service.newsfeed.repository.SharesRepository;
 import web.service.newsfeed.rpc.ChildComment;
 import web.service.newsfeed.rpc.GetNewsFeedRequest;
 import web.service.newsfeed.rpc.GetNewsFeedResponse;
+import web.service.newsfeed.rpc.Share;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,42 +21,83 @@ public class NewsFeedService {
     private final CommentsRepository commentRepository;
     private final SharesRepository sharesRepository;
     private final FollowClientRpc followClientRpc;
+    private final UserClientRpc userClientRpc;
 
-    public NewsFeedService(PostsRepository postRepository, CommentsRepository commentRepository, SharesRepository sharesRepository, FollowClientRpc followClientRpc) {
+    public NewsFeedService(PostsRepository postRepository, CommentsRepository commentRepository, SharesRepository sharesRepository, FollowClientRpc followClientRpc, UserClientRpc userClientRpc) {
         this.postRepository = postRepository;
         this.commentRepository = commentRepository;
         this.sharesRepository = sharesRepository;
         this.followClientRpc = followClientRpc;
+        this.userClientRpc = userClientRpc;
     }
 
-    private void getNewPostUser(String userId, List<web.service.newsfeed.rpc.Post> allPosts) {
+    private web.service.newsfeed.rpc.Post getNewPostUser(String userId) {
         Post post = postRepository.findDistinctFirstByUserIdAndOrderByPostTimeDesc(userId);
         if(post != null) {
             web.service.newsfeed.rpc.Post.Builder rpcPost = web.service.newsfeed.rpc.Post.newBuilder();
-            rpcPost.addAllComments()
+            List<Comment> allComments = new ArrayList<>();
+            List<Share> allShares = new ArrayList<>();
+
+            post.getComments().forEach(element ->
+                    allComments.add(commentRepository.getFirstByCommentId(element)));
+            post.getShares().forEach(element ->
+                    allShares.add(convertToRpcShare(sharesRepository.getFirstByShareId(element))));
+
+            rpcPost.addAllComments(convertToRpcCommentList(allComments));
+            rpcPost.setContent(post.getContent());
+            rpcPost.setUserId(post.getUserId());
+            rpcPost.setId(post.getId());
+            rpcPost.addAllLikes(post.getLikes());
+            rpcPost.addAllShares(allShares);
+            rpcPost.setImages(post.getImages());
+
+            return rpcPost.build();
         }
+        return null;
+    }
+
+    public Share convertToRpcShare(web.service.newsfeed.model.Share share) {
+        Share.Builder rpcShare = Share.newBuilder();
+        rpcShare.setContent(share.getContent());
+        rpcShare.setUserId(share.getUserId());
+        rpcShare.setId(share.getShareId());
+        return rpcShare.build();
     }
 
     public GetNewsFeedResponse getNewsFeed(GetNewsFeedRequest request) {
         List<web.service.newsfeed.rpc.Post> posts = new ArrayList<>();
         List<String> friends = followClientRpc.getFriends(request.getUserId());
-        friends.forEach(user -> getNewPostUser(user, posts));
+
+        friends.forEach(user -> posts.add(getNewPostUser(user)));
 
         GetNewsFeedResponse.Builder response = GetNewsFeedResponse.newBuilder();
-        response.addAllPosts(posts)
+        response.addAllPosts(posts);
+        return response.build();
     }
 
     private List<web.service.newsfeed.rpc.Comment> convertToRpcCommentList(List<Comment> commentsJava) {
-        web.service.newsfeed.rpc.Comment.Builder comment = web.service.newsfeed.rpc.Comment.newBuilder();
-        List<ChildComment> allChildComment = new ArrayList<>();
         List<web.service.newsfeed.rpc.Comment> allComment = new ArrayList<>();
         commentsJava.forEach(element -> addCommentToRpcListComment(element, allComment));
+        return allComment;
     }
 
     private void addCommentToRpcListComment(Comment comment, List<web.service.newsfeed.rpc.Comment> rpcList) {
         web.service.newsfeed.rpc.Comment.Builder rpcComment = web.service.newsfeed.rpc.Comment.newBuilder();
         rpcComment.setContent(comment.getContent());
         rpcComment.setUserAvatar(comment.getUserAvatar());
-        rpcComment.setC
+        rpcComment.setContent(comment.getContent());
+        List<ChildComment> listChildComment = new ArrayList<>();
+        comment.getChildComments().forEach(element ->addChildComment(element, listChildComment));
+        rpcComment.addAllChildComments(listChildComment);
+        rpcList.add(rpcComment.build());
     }
+
+    private void addChildComment(web.service.newsfeed.model.ChildComment childComment,
+                                 List<web.service.newsfeed.rpc.ChildComment> listChildComment) {
+        ChildComment.Builder rpcChildComment = ChildComment.newBuilder();
+        rpcChildComment.setContent(childComment.getContent());
+        rpcChildComment.setAvatar(userClientRpc.getUserAvatarFromUserService(childComment.getUserId()));
+        listChildComment.add(rpcChildComment.build());
+    }
+
 }

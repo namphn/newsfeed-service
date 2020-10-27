@@ -6,4 +6,5 @@ import web.service.newsfeed.model.Comment;
 
 @Repository
 public interface CommentsRepository extends MongoRepository<Comment, String> {
+    Comment getFirstByCommentId(String commentId);
 }

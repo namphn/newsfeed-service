@@ -6,4 +6,5 @@ import web.service.newsfeed.model.Share;
 
 @Repository
 public interface SharesRepository extends MongoRepository<Share, String> {
+    Share getFirstByShareId(String id);
 }

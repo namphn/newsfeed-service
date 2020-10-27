@@ -11,4 +11,9 @@ public class BeanConfig {
     ManagedChannel followGrpcBeanChanel(){
         return ManagedChannelBuilder.forAddress("localhost", 6569).usePlaintext().build();
     }
+
+    @Bean("user-service")
+    ManagedChannel userGrpcBeanChanel(){
+        return ManagedChannelBuilder.forAddress("localhost", 6567).usePlaintext().build();
+    }
 }

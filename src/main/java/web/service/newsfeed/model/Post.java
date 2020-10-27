@@ -19,7 +19,7 @@ public class Post {
     private String id;
     private String userId;
     private String content;
-    private List<String> images;
+    private String images;
     private List<String> comments;
     private List<String> likes;
     private List<String> shares;

@@ -42,6 +42,11 @@
             <version>2.2.4.RELEASE</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>29.0-android</version>
+        </dependency>
     </dependencies>
     <build>
         <extensions>

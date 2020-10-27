@@ -1,0 +1,18 @@
+syntax = "proto3";
+option java_multiple_files = true;
+option java_generic_services = true;
+option java_package = "web.service.newsfeed.rpc";
+
+message GetUserAvatarRequest {
+  string userId = 1;
+}
+
+message GetUserAvatarResponse {
+  string avatar = 1;
+}
+
+service UserService{
+  // get user avatar
+  rpc getUserAvatar(GetUserAvatarRequest) returns (GetUserAvatarResponse);
+}
+
