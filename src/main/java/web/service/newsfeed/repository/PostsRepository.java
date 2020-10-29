@@ -15,5 +15,5 @@ public interface PostsRepository extends MongoRepository<Post, String> {
      * @param userId
      * @return Post
      */
-    Post findDistinctFirstByUserIdAndOrderByPostTimeDesc(String userId);
+    Post getFirstByUserIdOrderByPostTimeDesc(String userId);
 }

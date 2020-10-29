@@ -7,4 +7,5 @@ public class Status {
     public static final String SHARED = "SHARED";
     public static final String COMMENTED = "COMMENTED";
     public static final String ADDED = "ADDED";
+    public static final String SUCCESS = "SUCCESS";
 }
