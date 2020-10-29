@@ -3,14 +3,13 @@ package web.service.newsfeed.service;
 import org.springframework.stereotype.Service;
 import web.service.newsfeed.model.Comment;
 import web.service.newsfeed.model.Post;
+import web.service.newsfeed.model.Status;
 import web.service.newsfeed.repository.CommentsRepository;
 import web.service.newsfeed.repository.PostsRepository;
 import web.service.newsfeed.repository.SharesRepository;
-import web.service.newsfeed.rpc.ChildComment;
-import web.service.newsfeed.rpc.GetNewsFeedRequest;
-import web.service.newsfeed.rpc.GetNewsFeedResponse;
-import web.service.newsfeed.rpc.Share;
+import web.service.newsfeed.rpc.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +31,7 @@ public class NewsFeedService {
     }
 
     private web.service.newsfeed.rpc.Post getNewPostUser(String userId) {
-        Post post = postRepository.findDistinctFirstByUserIdAndOrderByPostTimeDesc(userId);
+        Post post = postRepository.getFirstByUserIdOrderByPostTimeDesc(userId);
         if(post != null) {
             web.service.newsfeed.rpc.Post.Builder rpcPost = web.service.newsfeed.rpc.Post.newBuilder();
             List<Comment> allComments = new ArrayList<>();
@@ -98,6 +97,19 @@ public class NewsFeedService {
         rpcChildComment.setContent(childComment.getContent());
         rpcChildComment.setAvatar(userClientRpc.getUserAvatarFromUserService(childComment.getUserId()));
         listChildComment.add(rpcChildComment.build());
+    }
+
+    public SaveNewPostResponse saveNewPost(web.service.newsfeed.rpc.Post newPost) {
+        Post post = new Post();
+        post.setUserId(newPost.getUserId());
+        post.setContent(newPost.getContent());
+        post.setImages(newPost.getImages());
+        post.setPostTime(LocalDateTime.now());
+        postRepository.save(post);
+
+        SaveNewPostResponse.Builder response = SaveNewPostResponse.newBuilder();
+        response.setStatus(Status.SUCCESS);
+        return response.build();
     }
 
 }

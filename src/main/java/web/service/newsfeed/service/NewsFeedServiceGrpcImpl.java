@@ -2,18 +2,25 @@ package web.service.newsfeed.service;
 
 import io.grpc.stub.StreamObserver;
 import org.lognet.springboot.grpc.GRpcService;
+import org.springframework.beans.factory.annotation.Autowired;
 import web.service.newsfeed.rpc.*;
 
 @GRpcService
 public class NewsFeedServiceGrpcImpl extends NewsFeedServiceGrpc.NewsFeedServiceImplBase {
+
+    @Autowired
+    NewsFeedService newsFeedService;
+
     @Override
     public void getNewsFeed(GetNewsFeedRequest request, StreamObserver<GetNewsFeedResponse> responseObserver) {
-        super.getNewsFeed(request, responseObserver);
+        responseObserver.onNext(newsFeedService.getNewsFeed(request));
+        responseObserver.onCompleted();
     }
 
     @Override
     public void saveNewPost(Post request, StreamObserver<SaveNewPostResponse> responseObserver) {
-        super.saveNewPost(request, responseObserver);
+        responseObserver.onNext(newsFeedService.saveNewPost(request));
+        responseObserver.onCompleted();
     }
 
     @Override
