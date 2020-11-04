@@ -113,4 +113,14 @@ public interface PostOrBuilder extends
    */
   com.google.protobuf.ByteString
       getImagesBytes();
+
+  /**
+   * <code>string postTime = 8;</code>
+   */
+  java.lang.String getPostTime();
+  /**
+   * <code>string postTime = 8;</code>
+   */
+  com.google.protobuf.ByteString
+      getPostTimeBytes();
 }

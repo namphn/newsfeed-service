@@ -19,6 +19,7 @@ private static final long serialVersionUID = 0L;
     userId_ = "";
     content_ = "";
     userAvatar_ = "";
+    timeComment_ = "";
     childComments_ = java.util.Collections.emptyList();
   }
 
@@ -72,16 +73,9 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 34: {
-            com.google.protobuf.Timestamp.Builder subBuilder = null;
-            if (commentTime_ != null) {
-              subBuilder = commentTime_.toBuilder();
-            }
-            commentTime_ = input.readMessage(com.google.protobuf.Timestamp.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom(commentTime_);
-              commentTime_ = subBuilder.buildPartial();
-            }
+            java.lang.String s = input.readStringRequireUtf8();
 
+            timeComment_ = s;
             break;
           }
           case 42: {
@@ -223,25 +217,38 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int COMMENTTIME_FIELD_NUMBER = 4;
-  private com.google.protobuf.Timestamp commentTime_;
+  public static final int TIMECOMMENT_FIELD_NUMBER = 4;
+  private volatile java.lang.Object timeComment_;
   /**
-   * <code>.google.protobuf.Timestamp commentTime = 4;</code>
+   * <code>string timeComment = 4;</code>
    */
-  public boolean hasCommentTime() {
-    return commentTime_ != null;
+  public java.lang.String getTimeComment() {
+    java.lang.Object ref = timeComment_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      timeComment_ = s;
+      return s;
+    }
   }
   /**
-   * <code>.google.protobuf.Timestamp commentTime = 4;</code>
+   * <code>string timeComment = 4;</code>
    */
-  public com.google.protobuf.Timestamp getCommentTime() {
-    return commentTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : commentTime_;
-  }
-  /**
-   * <code>.google.protobuf.Timestamp commentTime = 4;</code>
-   */
-  public com.google.protobuf.TimestampOrBuilder getCommentTimeOrBuilder() {
-    return getCommentTime();
+  public com.google.protobuf.ByteString
+      getTimeCommentBytes() {
+    java.lang.Object ref = timeComment_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      timeComment_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   public static final int CHILDCOMMENTS_FIELD_NUMBER = 5;
@@ -300,8 +307,8 @@ private static final long serialVersionUID = 0L;
     if (!getUserAvatarBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, userAvatar_);
     }
-    if (commentTime_ != null) {
-      output.writeMessage(4, getCommentTime());
+    if (!getTimeCommentBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, timeComment_);
     }
     for (int i = 0; i < childComments_.size(); i++) {
       output.writeMessage(5, childComments_.get(i));
@@ -323,9 +330,8 @@ private static final long serialVersionUID = 0L;
     if (!getUserAvatarBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, userAvatar_);
     }
-    if (commentTime_ != null) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(4, getCommentTime());
+    if (!getTimeCommentBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, timeComment_);
     }
     for (int i = 0; i < childComments_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
@@ -353,11 +359,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getContent());
     result = result && getUserAvatar()
         .equals(other.getUserAvatar());
-    result = result && (hasCommentTime() == other.hasCommentTime());
-    if (hasCommentTime()) {
-      result = result && getCommentTime()
-          .equals(other.getCommentTime());
-    }
+    result = result && getTimeComment()
+        .equals(other.getTimeComment());
     result = result && getChildCommentsList()
         .equals(other.getChildCommentsList());
     result = result && unknownFields.equals(other.unknownFields);
@@ -377,10 +380,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getContent().hashCode();
     hash = (37 * hash) + USERAVATAR_FIELD_NUMBER;
     hash = (53 * hash) + getUserAvatar().hashCode();
-    if (hasCommentTime()) {
-      hash = (37 * hash) + COMMENTTIME_FIELD_NUMBER;
-      hash = (53 * hash) + getCommentTime().hashCode();
-    }
+    hash = (37 * hash) + TIMECOMMENT_FIELD_NUMBER;
+    hash = (53 * hash) + getTimeComment().hashCode();
     if (getChildCommentsCount() > 0) {
       hash = (37 * hash) + CHILDCOMMENTS_FIELD_NUMBER;
       hash = (53 * hash) + getChildCommentsList().hashCode();
@@ -521,12 +522,8 @@ private static final long serialVersionUID = 0L;
 
       userAvatar_ = "";
 
-      if (commentTimeBuilder_ == null) {
-        commentTime_ = null;
-      } else {
-        commentTime_ = null;
-        commentTimeBuilder_ = null;
-      }
+      timeComment_ = "";
+
       if (childCommentsBuilder_ == null) {
         childComments_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000010);
@@ -560,11 +557,7 @@ private static final long serialVersionUID = 0L;
       result.userId_ = userId_;
       result.content_ = content_;
       result.userAvatar_ = userAvatar_;
-      if (commentTimeBuilder_ == null) {
-        result.commentTime_ = commentTime_;
-      } else {
-        result.commentTime_ = commentTimeBuilder_.build();
-      }
+      result.timeComment_ = timeComment_;
       if (childCommentsBuilder_ == null) {
         if (((bitField0_ & 0x00000010) == 0x00000010)) {
           childComments_ = java.util.Collections.unmodifiableList(childComments_);
@@ -628,8 +621,9 @@ private static final long serialVersionUID = 0L;
         userAvatar_ = other.userAvatar_;
         onChanged();
       }
-      if (other.hasCommentTime()) {
-        mergeCommentTime(other.getCommentTime());
+      if (!other.getTimeComment().isEmpty()) {
+        timeComment_ = other.timeComment_;
+        onChanged();
       }
       if (childCommentsBuilder_ == null) {
         if (!other.childComments_.isEmpty()) {
@@ -892,121 +886,73 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.google.protobuf.Timestamp commentTime_ = null;
-    private com.google.protobuf.SingleFieldBuilderV3<
-        com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> commentTimeBuilder_;
+    private java.lang.Object timeComment_ = "";
     /**
-     * <code>.google.protobuf.Timestamp commentTime = 4;</code>
+     * <code>string timeComment = 4;</code>
      */
-    public boolean hasCommentTime() {
-      return commentTimeBuilder_ != null || commentTime_ != null;
-    }
-    /**
-     * <code>.google.protobuf.Timestamp commentTime = 4;</code>
-     */
-    public com.google.protobuf.Timestamp getCommentTime() {
-      if (commentTimeBuilder_ == null) {
-        return commentTime_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : commentTime_;
+    public java.lang.String getTimeComment() {
+      java.lang.Object ref = timeComment_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        timeComment_ = s;
+        return s;
       } else {
-        return commentTimeBuilder_.getMessage();
+        return (java.lang.String) ref;
       }
     }
     /**
-     * <code>.google.protobuf.Timestamp commentTime = 4;</code>
+     * <code>string timeComment = 4;</code>
      */
-    public Builder setCommentTime(com.google.protobuf.Timestamp value) {
-      if (commentTimeBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        commentTime_ = value;
-        onChanged();
+    public com.google.protobuf.ByteString
+        getTimeCommentBytes() {
+      java.lang.Object ref = timeComment_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        timeComment_ = b;
+        return b;
       } else {
-        commentTimeBuilder_.setMessage(value);
+        return (com.google.protobuf.ByteString) ref;
       }
-
-      return this;
     }
     /**
-     * <code>.google.protobuf.Timestamp commentTime = 4;</code>
+     * <code>string timeComment = 4;</code>
      */
-    public Builder setCommentTime(
-        com.google.protobuf.Timestamp.Builder builderForValue) {
-      if (commentTimeBuilder_ == null) {
-        commentTime_ = builderForValue.build();
-        onChanged();
-      } else {
-        commentTimeBuilder_.setMessage(builderForValue.build());
-      }
-
-      return this;
-    }
-    /**
-     * <code>.google.protobuf.Timestamp commentTime = 4;</code>
-     */
-    public Builder mergeCommentTime(com.google.protobuf.Timestamp value) {
-      if (commentTimeBuilder_ == null) {
-        if (commentTime_ != null) {
-          commentTime_ =
-            com.google.protobuf.Timestamp.newBuilder(commentTime_).mergeFrom(value).buildPartial();
-        } else {
-          commentTime_ = value;
-        }
-        onChanged();
-      } else {
-        commentTimeBuilder_.mergeFrom(value);
-      }
-
-      return this;
-    }
-    /**
-     * <code>.google.protobuf.Timestamp commentTime = 4;</code>
-     */
-    public Builder clearCommentTime() {
-      if (commentTimeBuilder_ == null) {
-        commentTime_ = null;
-        onChanged();
-      } else {
-        commentTime_ = null;
-        commentTimeBuilder_ = null;
-      }
-
-      return this;
-    }
-    /**
-     * <code>.google.protobuf.Timestamp commentTime = 4;</code>
-     */
-    public com.google.protobuf.Timestamp.Builder getCommentTimeBuilder() {
-      
+    public Builder setTimeComment(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      timeComment_ = value;
       onChanged();
-      return getCommentTimeFieldBuilder().getBuilder();
+      return this;
     }
     /**
-     * <code>.google.protobuf.Timestamp commentTime = 4;</code>
+     * <code>string timeComment = 4;</code>
      */
-    public com.google.protobuf.TimestampOrBuilder getCommentTimeOrBuilder() {
-      if (commentTimeBuilder_ != null) {
-        return commentTimeBuilder_.getMessageOrBuilder();
-      } else {
-        return commentTime_ == null ?
-            com.google.protobuf.Timestamp.getDefaultInstance() : commentTime_;
-      }
+    public Builder clearTimeComment() {
+      
+      timeComment_ = getDefaultInstance().getTimeComment();
+      onChanged();
+      return this;
     }
     /**
-     * <code>.google.protobuf.Timestamp commentTime = 4;</code>
+     * <code>string timeComment = 4;</code>
      */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
-        getCommentTimeFieldBuilder() {
-      if (commentTimeBuilder_ == null) {
-        commentTimeBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
-                getCommentTime(),
-                getParentForChildren(),
-                isClean());
-        commentTime_ = null;
-      }
-      return commentTimeBuilder_;
+    public Builder setTimeCommentBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      timeComment_ = value;
+      onChanged();
+      return this;
     }
 
     private java.util.List<web.service.newsfeed.rpc.ChildComment> childComments_ =

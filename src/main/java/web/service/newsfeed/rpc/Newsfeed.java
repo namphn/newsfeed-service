@@ -100,36 +100,37 @@ public final class Newsfeed {
     java.lang.String[] descriptorData = {
       "\n\016newsfeed.proto\032\037google/protobuf/timest" +
       "amp.proto\"$\n\022GetNewsFeedRequest\022\016\n\006userI" +
-      "d\030\001 \001(\t\"?\n\014ChildComment\022\016\n\006userId\030\001 \001(\t\022" +
-      "\017\n\007content\030\002 \001(\t\022\016\n\006avatar\030\003 \001(\t\"\225\001\n\007Com" +
-      "ment\022\016\n\006userId\030\001 \001(\t\022\017\n\007content\030\002 \001(\t\022\022\n" +
-      "\nuserAvatar\030\003 \001(\t\022/\n\013commentTime\030\004 \001(\0132\032" +
-      ".google.protobuf.Timestamp\022$\n\rchildComme" +
-      "nts\030\005 \003(\0132\r.ChildComment\"4\n\005Share\022\n\n\002id\030" +
-      "\001 \001(\t\022\016\n\006userId\030\002 \001(\t\022\017\n\007content\030\003 \001(\t\"\206" +
-      "\001\n\004Post\022\n\n\002id\030\001 \001(\t\022\016\n\006userId\030\002 \001(\t\022\017\n\007c" +
-      "ontent\030\003 \001(\t\022\032\n\010comments\030\004 \003(\0132\010.Comment" +
-      "\022\r\n\005likes\030\005 \003(\t\022\026\n\006shares\030\006 \003(\0132\006.Share\022" +
-      "\016\n\006images\030\007 \001(\t\"+\n\023GetNewsFeedResponse\022\024" +
-      "\n\005posts\030\001 \003(\0132\005.Post\"%\n\023SaveNewPostRespo" +
-      "nse\022\016\n\006status\030\001 \001(\t\"-\n\013LikeRequest\022\016\n\006us" +
-      "erId\030\001 \001(\t\022\016\n\006postId\030\002 \001(\t\"\036\n\014LikeRespon" +
-      "se\022\016\n\006status\030\001 \001(\t\"?\n\014ShareRequest\022\016\n\006us" +
-      "erId\030\001 \001(\t\022\016\n\006postId\030\002 \001(\t\022\017\n\007content\030\003 " +
-      "\001(\t\"\037\n\rShareResponse\022\016\n\006status\030\001 \001(\t\"A\n\016" +
-      "CommentRequest\022\016\n\006userId\030\001 \001(\t\022\016\n\006postId" +
-      "\030\002 \001(\t\022\017\n\007content\030\003 \001(\t\"!\n\017CommentRespon" +
-      "se\022\016\n\006status\030\001 \001(\t\",\n\nTagRequest\022\016\n\006user" +
-      "Id\030\001 \001(\t\022\016\n\006postId\030\002 \001(\t\"\035\n\013TagResponse\022" +
-      "\016\n\006status\030\001 \001(\t2\224\002\n\017NewsFeedService\0228\n\013g" +
-      "etNewsFeed\022\023.GetNewsFeedRequest\032\024.GetNew" +
-      "sFeedResponse\022*\n\013saveNewPost\022\005.Post\032\024.Sa" +
-      "veNewPostResponse\022#\n\004like\022\014.LikeRequest\032" +
-      "\r.LikeResponse\022&\n\005share\022\r.ShareRequest\032\016" +
-      ".ShareResponse\022,\n\007comment\022\017.CommentReque" +
-      "st\032\020.CommentResponse\022 \n\003tag\022\013.TagRequest" +
-      "\032\014.TagResponseB\037\n\030web.service.newsfeed.r" +
-      "pcP\001\210\001\001b\006proto3"
+      "d\030\001 \001(\t\"T\n\014ChildComment\022\016\n\006userId\030\001 \001(\t\022" +
+      "\017\n\007content\030\002 \001(\t\022\016\n\006avatar\030\003 \001(\t\022\023\n\013time" +
+      "Comment\030\004 \001(\t\"y\n\007Comment\022\016\n\006userId\030\001 \001(\t" +
+      "\022\017\n\007content\030\002 \001(\t\022\022\n\nuserAvatar\030\003 \001(\t\022\023\n" +
+      "\013timeComment\030\004 \001(\t\022$\n\rchildComments\030\005 \003(" +
+      "\0132\r.ChildComment\"G\n\005Share\022\n\n\002id\030\001 \001(\t\022\016\n" +
+      "\006userId\030\002 \001(\t\022\017\n\007content\030\003 \001(\t\022\021\n\ttimeSh" +
+      "are\030\004 \001(\t\"\230\001\n\004Post\022\n\n\002id\030\001 \001(\t\022\016\n\006userId" +
+      "\030\002 \001(\t\022\017\n\007content\030\003 \001(\t\022\032\n\010comments\030\004 \003(" +
+      "\0132\010.Comment\022\r\n\005likes\030\005 \003(\t\022\026\n\006shares\030\006 \003" +
+      "(\0132\006.Share\022\016\n\006images\030\007 \001(\t\022\020\n\010postTime\030\010" +
+      " \001(\t\"+\n\023GetNewsFeedResponse\022\024\n\005posts\030\001 \003" +
+      "(\0132\005.Post\"%\n\023SaveNewPostResponse\022\016\n\006stat" +
+      "us\030\001 \001(\t\"-\n\013LikeRequest\022\016\n\006userId\030\001 \001(\t\022" +
+      "\016\n\006postId\030\002 \001(\t\"\036\n\014LikeResponse\022\016\n\006statu" +
+      "s\030\001 \001(\t\"?\n\014ShareRequest\022\016\n\006userId\030\001 \001(\t\022" +
+      "\016\n\006postId\030\002 \001(\t\022\017\n\007content\030\003 \001(\t\"\037\n\rShar" +
+      "eResponse\022\016\n\006status\030\001 \001(\t\"A\n\016CommentRequ" +
+      "est\022\016\n\006userId\030\001 \001(\t\022\016\n\006postId\030\002 \001(\t\022\017\n\007c" +
+      "ontent\030\003 \001(\t\"!\n\017CommentResponse\022\016\n\006statu" +
+      "s\030\001 \001(\t\",\n\nTagRequest\022\016\n\006userId\030\001 \001(\t\022\016\n" +
+      "\006postId\030\002 \001(\t\"\035\n\013TagResponse\022\016\n\006status\030\001" +
+      " \001(\t2\224\002\n\017NewsFeedService\0228\n\013getNewsFeed\022" +
+      "\023.GetNewsFeedRequest\032\024.GetNewsFeedRespon" +
+      "se\022*\n\013saveNewPost\022\005.Post\032\024.SaveNewPostRe" +
+      "sponse\022#\n\004like\022\014.LikeRequest\032\r.LikeRespo" +
+      "nse\022&\n\005share\022\r.ShareRequest\032\016.ShareRespo" +
+      "nse\022,\n\007comment\022\017.CommentRequest\032\020.Commen" +
+      "tResponse\022 \n\003tag\022\013.TagRequest\032\014.TagRespo" +
+      "nseB\037\n\030web.service.newsfeed.rpcP\001\210\001\001b\006pr" +
+      "oto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -155,25 +156,25 @@ public final class Newsfeed {
     internal_static_ChildComment_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ChildComment_descriptor,
-        new java.lang.String[] { "UserId", "Content", "Avatar", });
+        new java.lang.String[] { "UserId", "Content", "Avatar", "TimeComment", });
     internal_static_Comment_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_Comment_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Comment_descriptor,
-        new java.lang.String[] { "UserId", "Content", "UserAvatar", "CommentTime", "ChildComments", });
+        new java.lang.String[] { "UserId", "Content", "UserAvatar", "TimeComment", "ChildComments", });
     internal_static_Share_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_Share_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Share_descriptor,
-        new java.lang.String[] { "Id", "UserId", "Content", });
+        new java.lang.String[] { "Id", "UserId", "Content", "TimeShare", });
     internal_static_Post_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_Post_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Post_descriptor,
-        new java.lang.String[] { "Id", "UserId", "Content", "Comments", "Likes", "Shares", "Images", });
+        new java.lang.String[] { "Id", "UserId", "Content", "Comments", "Likes", "Shares", "Images", "PostTime", });
     internal_static_GetNewsFeedResponse_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_GetNewsFeedResponse_fieldAccessorTable = new

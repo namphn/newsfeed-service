@@ -11,8 +11,20 @@ message GetUserAvatarResponse {
   string avatar = 1;
 }
 
-service UserService{
+message AddNewImageRequest {
+  string image = 1;
+  string userId = 2;
+}
+
+message AddNewImageResponse {
+  bool success = 1;
+}
+
+service UserService   {
   // get user avatar
   rpc getUserAvatar(GetUserAvatarRequest) returns (GetUserAvatarResponse);
+
+  // user add image
+  rpc addNewImage(AddNewImageRequest) returns (AddNewImageResponse);
 }
 
