@@ -38,17 +38,14 @@ public interface CommentOrBuilder extends
       getUserAvatarBytes();
 
   /**
-   * <code>.google.protobuf.Timestamp commentTime = 4;</code>
+   * <code>string timeComment = 4;</code>
    */
-  boolean hasCommentTime();
+  java.lang.String getTimeComment();
   /**
-   * <code>.google.protobuf.Timestamp commentTime = 4;</code>
+   * <code>string timeComment = 4;</code>
    */
-  com.google.protobuf.Timestamp getCommentTime();
-  /**
-   * <code>.google.protobuf.Timestamp commentTime = 4;</code>
-   */
-  com.google.protobuf.TimestampOrBuilder getCommentTimeOrBuilder();
+  com.google.protobuf.ByteString
+      getTimeCommentBytes();
 
   /**
    * <code>repeated .ChildComment childComments = 5;</code>

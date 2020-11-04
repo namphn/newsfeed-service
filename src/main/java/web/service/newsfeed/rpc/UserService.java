@@ -23,6 +23,18 @@ public  abstract class UserService
         web.service.newsfeed.rpc.GetUserAvatarRequest request,
         com.google.protobuf.RpcCallback<web.service.newsfeed.rpc.GetUserAvatarResponse> done);
 
+    /**
+     * <pre>
+     * user add image
+     * </pre>
+     *
+     * <code>rpc addNewImage(.AddNewImageRequest) returns (.AddNewImageResponse);</code>
+     */
+    public abstract void addNewImage(
+        com.google.protobuf.RpcController controller,
+        web.service.newsfeed.rpc.AddNewImageRequest request,
+        com.google.protobuf.RpcCallback<web.service.newsfeed.rpc.AddNewImageResponse> done);
+
   }
 
   public static com.google.protobuf.Service newReflectiveService(
@@ -34,6 +46,14 @@ public  abstract class UserService
           web.service.newsfeed.rpc.GetUserAvatarRequest request,
           com.google.protobuf.RpcCallback<web.service.newsfeed.rpc.GetUserAvatarResponse> done) {
         impl.getUserAvatar(controller, request, done);
+      }
+
+      @java.lang.Override
+      public  void addNewImage(
+          com.google.protobuf.RpcController controller,
+          web.service.newsfeed.rpc.AddNewImageRequest request,
+          com.google.protobuf.RpcCallback<web.service.newsfeed.rpc.AddNewImageResponse> done) {
+        impl.addNewImage(controller, request, done);
       }
 
     };
@@ -60,6 +80,8 @@ public  abstract class UserService
         switch(method.getIndex()) {
           case 0:
             return impl.getUserAvatar(controller, (web.service.newsfeed.rpc.GetUserAvatarRequest)request);
+          case 1:
+            return impl.addNewImage(controller, (web.service.newsfeed.rpc.AddNewImageRequest)request);
           default:
             throw new java.lang.AssertionError("Can't get here.");
         }
@@ -76,6 +98,8 @@ public  abstract class UserService
         switch(method.getIndex()) {
           case 0:
             return web.service.newsfeed.rpc.GetUserAvatarRequest.getDefaultInstance();
+          case 1:
+            return web.service.newsfeed.rpc.AddNewImageRequest.getDefaultInstance();
           default:
             throw new java.lang.AssertionError("Can't get here.");
         }
@@ -92,6 +116,8 @@ public  abstract class UserService
         switch(method.getIndex()) {
           case 0:
             return web.service.newsfeed.rpc.GetUserAvatarResponse.getDefaultInstance();
+          case 1:
+            return web.service.newsfeed.rpc.AddNewImageResponse.getDefaultInstance();
           default:
             throw new java.lang.AssertionError("Can't get here.");
         }
@@ -111,6 +137,18 @@ public  abstract class UserService
       com.google.protobuf.RpcController controller,
       web.service.newsfeed.rpc.GetUserAvatarRequest request,
       com.google.protobuf.RpcCallback<web.service.newsfeed.rpc.GetUserAvatarResponse> done);
+
+  /**
+   * <pre>
+   * user add image
+   * </pre>
+   *
+   * <code>rpc addNewImage(.AddNewImageRequest) returns (.AddNewImageResponse);</code>
+   */
+  public abstract void addNewImage(
+      com.google.protobuf.RpcController controller,
+      web.service.newsfeed.rpc.AddNewImageRequest request,
+      com.google.protobuf.RpcCallback<web.service.newsfeed.rpc.AddNewImageResponse> done);
 
   public static final
       com.google.protobuf.Descriptors.ServiceDescriptor
@@ -139,6 +177,11 @@ public  abstract class UserService
           com.google.protobuf.RpcUtil.<web.service.newsfeed.rpc.GetUserAvatarResponse>specializeCallback(
             done));
         return;
+      case 1:
+        this.addNewImage(controller, (web.service.newsfeed.rpc.AddNewImageRequest)request,
+          com.google.protobuf.RpcUtil.<web.service.newsfeed.rpc.AddNewImageResponse>specializeCallback(
+            done));
+        return;
       default:
         throw new java.lang.AssertionError("Can't get here.");
     }
@@ -155,6 +198,8 @@ public  abstract class UserService
     switch(method.getIndex()) {
       case 0:
         return web.service.newsfeed.rpc.GetUserAvatarRequest.getDefaultInstance();
+      case 1:
+        return web.service.newsfeed.rpc.AddNewImageRequest.getDefaultInstance();
       default:
         throw new java.lang.AssertionError("Can't get here.");
     }
@@ -171,6 +216,8 @@ public  abstract class UserService
     switch(method.getIndex()) {
       case 0:
         return web.service.newsfeed.rpc.GetUserAvatarResponse.getDefaultInstance();
+      case 1:
+        return web.service.newsfeed.rpc.AddNewImageResponse.getDefaultInstance();
       default:
         throw new java.lang.AssertionError("Can't get here.");
     }
@@ -206,6 +253,21 @@ public  abstract class UserService
           web.service.newsfeed.rpc.GetUserAvatarResponse.class,
           web.service.newsfeed.rpc.GetUserAvatarResponse.getDefaultInstance()));
     }
+
+    public  void addNewImage(
+        com.google.protobuf.RpcController controller,
+        web.service.newsfeed.rpc.AddNewImageRequest request,
+        com.google.protobuf.RpcCallback<web.service.newsfeed.rpc.AddNewImageResponse> done) {
+      channel.callMethod(
+        getDescriptor().getMethods().get(1),
+        controller,
+        request,
+        web.service.newsfeed.rpc.AddNewImageResponse.getDefaultInstance(),
+        com.google.protobuf.RpcUtil.generalizeCallback(
+          done,
+          web.service.newsfeed.rpc.AddNewImageResponse.class,
+          web.service.newsfeed.rpc.AddNewImageResponse.getDefaultInstance()));
+    }
   }
 
   public static BlockingInterface newBlockingStub(
@@ -217,6 +279,11 @@ public  abstract class UserService
     public web.service.newsfeed.rpc.GetUserAvatarResponse getUserAvatar(
         com.google.protobuf.RpcController controller,
         web.service.newsfeed.rpc.GetUserAvatarRequest request)
+        throws com.google.protobuf.ServiceException;
+
+    public web.service.newsfeed.rpc.AddNewImageResponse addNewImage(
+        com.google.protobuf.RpcController controller,
+        web.service.newsfeed.rpc.AddNewImageRequest request)
         throws com.google.protobuf.ServiceException;
   }
 
@@ -236,6 +303,18 @@ public  abstract class UserService
         controller,
         request,
         web.service.newsfeed.rpc.GetUserAvatarResponse.getDefaultInstance());
+    }
+
+
+    public web.service.newsfeed.rpc.AddNewImageResponse addNewImage(
+        com.google.protobuf.RpcController controller,
+        web.service.newsfeed.rpc.AddNewImageRequest request)
+        throws com.google.protobuf.ServiceException {
+      return (web.service.newsfeed.rpc.AddNewImageResponse) channel.callBlockingMethod(
+        getDescriptor().getMethods().get(1),
+        controller,
+        request,
+        web.service.newsfeed.rpc.AddNewImageResponse.getDefaultInstance());
     }
 
   }

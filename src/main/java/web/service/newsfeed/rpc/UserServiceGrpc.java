@@ -59,6 +59,38 @@ public final class UserServiceGrpc {
      return getGetUserAvatarMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<web.service.newsfeed.rpc.AddNewImageRequest,
+      web.service.newsfeed.rpc.AddNewImageResponse> getAddNewImageMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "addNewImage",
+      requestType = web.service.newsfeed.rpc.AddNewImageRequest.class,
+      responseType = web.service.newsfeed.rpc.AddNewImageResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<web.service.newsfeed.rpc.AddNewImageRequest,
+      web.service.newsfeed.rpc.AddNewImageResponse> getAddNewImageMethod() {
+    io.grpc.MethodDescriptor<web.service.newsfeed.rpc.AddNewImageRequest, web.service.newsfeed.rpc.AddNewImageResponse> getAddNewImageMethod;
+    if ((getAddNewImageMethod = UserServiceGrpc.getAddNewImageMethod) == null) {
+      synchronized (UserServiceGrpc.class) {
+        if ((getAddNewImageMethod = UserServiceGrpc.getAddNewImageMethod) == null) {
+          UserServiceGrpc.getAddNewImageMethod = getAddNewImageMethod = 
+              io.grpc.MethodDescriptor.<web.service.newsfeed.rpc.AddNewImageRequest, web.service.newsfeed.rpc.AddNewImageResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "UserService", "addNewImage"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  web.service.newsfeed.rpc.AddNewImageRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  web.service.newsfeed.rpc.AddNewImageResponse.getDefaultInstance()))
+                  .setSchemaDescriptor(new UserServiceMethodDescriptorSupplier("addNewImage"))
+                  .build();
+          }
+        }
+     }
+     return getAddNewImageMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -96,6 +128,16 @@ public final class UserServiceGrpc {
       asyncUnimplementedUnaryCall(getGetUserAvatarMethod(), responseObserver);
     }
 
+    /**
+     * <pre>
+     * user add image
+     * </pre>
+     */
+    public void addNewImage(web.service.newsfeed.rpc.AddNewImageRequest request,
+        io.grpc.stub.StreamObserver<web.service.newsfeed.rpc.AddNewImageResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(getAddNewImageMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -105,6 +147,13 @@ public final class UserServiceGrpc {
                 web.service.newsfeed.rpc.GetUserAvatarRequest,
                 web.service.newsfeed.rpc.GetUserAvatarResponse>(
                   this, METHODID_GET_USER_AVATAR)))
+          .addMethod(
+            getAddNewImageMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                web.service.newsfeed.rpc.AddNewImageRequest,
+                web.service.newsfeed.rpc.AddNewImageResponse>(
+                  this, METHODID_ADD_NEW_IMAGE)))
           .build();
     }
   }
@@ -137,6 +186,17 @@ public final class UserServiceGrpc {
       asyncUnaryCall(
           getChannel().newCall(getGetUserAvatarMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     * <pre>
+     * user add image
+     * </pre>
+     */
+    public void addNewImage(web.service.newsfeed.rpc.AddNewImageRequest request,
+        io.grpc.stub.StreamObserver<web.service.newsfeed.rpc.AddNewImageResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getAddNewImageMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -165,6 +225,16 @@ public final class UserServiceGrpc {
     public web.service.newsfeed.rpc.GetUserAvatarResponse getUserAvatar(web.service.newsfeed.rpc.GetUserAvatarRequest request) {
       return blockingUnaryCall(
           getChannel(), getGetUserAvatarMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * user add image
+     * </pre>
+     */
+    public web.service.newsfeed.rpc.AddNewImageResponse addNewImage(web.service.newsfeed.rpc.AddNewImageRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getAddNewImageMethod(), getCallOptions(), request);
     }
   }
 
@@ -196,9 +266,21 @@ public final class UserServiceGrpc {
       return futureUnaryCall(
           getChannel().newCall(getGetUserAvatarMethod(), getCallOptions()), request);
     }
+
+    /**
+     * <pre>
+     * user add image
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<web.service.newsfeed.rpc.AddNewImageResponse> addNewImage(
+        web.service.newsfeed.rpc.AddNewImageRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getAddNewImageMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_GET_USER_AVATAR = 0;
+  private static final int METHODID_ADD_NEW_IMAGE = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -220,6 +302,10 @@ public final class UserServiceGrpc {
         case METHODID_GET_USER_AVATAR:
           serviceImpl.getUserAvatar((web.service.newsfeed.rpc.GetUserAvatarRequest) request,
               (io.grpc.stub.StreamObserver<web.service.newsfeed.rpc.GetUserAvatarResponse>) responseObserver);
+          break;
+        case METHODID_ADD_NEW_IMAGE:
+          serviceImpl.addNewImage((web.service.newsfeed.rpc.AddNewImageRequest) request,
+              (io.grpc.stub.StreamObserver<web.service.newsfeed.rpc.AddNewImageResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -283,6 +369,7 @@ public final class UserServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new UserServiceFileDescriptorSupplier())
               .addMethod(getGetUserAvatarMethod())
+              .addMethod(getAddNewImageMethod())
               .build();
         }
       }

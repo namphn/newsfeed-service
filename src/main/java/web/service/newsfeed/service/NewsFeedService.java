@@ -106,10 +106,11 @@ public class NewsFeedService {
         post.setImages(newPost.getImages());
         post.setPostTime(LocalDateTime.now());
         postRepository.save(post);
-
         SaveNewPostResponse.Builder response = SaveNewPostResponse.newBuilder();
-        response.setStatus(Status.SUCCESS);
+        if(userClientRpc.addNewImage(newPost.getUserId(), newPost.getImages())) {
+            response.setStatus(Status.SUCCESS);
+        }
+        else response.setStatus(Status.CAN_NOT_SAVE);
         return response.build();
     }
-
 }

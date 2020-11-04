@@ -19,6 +19,7 @@ private static final long serialVersionUID = 0L;
     id_ = "";
     userId_ = "";
     content_ = "";
+    timeShare_ = "";
   }
 
   @java.lang.Override
@@ -68,6 +69,12 @@ private static final long serialVersionUID = 0L;
             java.lang.String s = input.readStringRequireUtf8();
 
             content_ = s;
+            break;
+          }
+          case 34: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            timeShare_ = s;
             break;
           }
         }
@@ -196,6 +203,40 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int TIMESHARE_FIELD_NUMBER = 4;
+  private volatile java.lang.Object timeShare_;
+  /**
+   * <code>string timeShare = 4;</code>
+   */
+  public java.lang.String getTimeShare() {
+    java.lang.Object ref = timeShare_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      timeShare_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string timeShare = 4;</code>
+   */
+  public com.google.protobuf.ByteString
+      getTimeShareBytes() {
+    java.lang.Object ref = timeShare_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      timeShare_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -217,6 +258,9 @@ private static final long serialVersionUID = 0L;
     if (!getContentBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, content_);
     }
+    if (!getTimeShareBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, timeShare_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -233,6 +277,9 @@ private static final long serialVersionUID = 0L;
     }
     if (!getContentBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, content_);
+    }
+    if (!getTimeShareBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, timeShare_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -256,6 +303,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getUserId());
     result = result && getContent()
         .equals(other.getContent());
+    result = result && getTimeShare()
+        .equals(other.getTimeShare());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -273,6 +322,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getUserId().hashCode();
     hash = (37 * hash) + CONTENT_FIELD_NUMBER;
     hash = (53 * hash) + getContent().hashCode();
+    hash = (37 * hash) + TIMESHARE_FIELD_NUMBER;
+    hash = (53 * hash) + getTimeShare().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -408,6 +459,8 @@ private static final long serialVersionUID = 0L;
 
       content_ = "";
 
+      timeShare_ = "";
+
       return this;
     }
 
@@ -433,6 +486,7 @@ private static final long serialVersionUID = 0L;
       result.id_ = id_;
       result.userId_ = userId_;
       result.content_ = content_;
+      result.timeShare_ = timeShare_;
       onBuilt();
       return result;
     }
@@ -484,6 +538,10 @@ private static final long serialVersionUID = 0L;
       }
       if (!other.getContent().isEmpty()) {
         content_ = other.content_;
+        onChanged();
+      }
+      if (!other.getTimeShare().isEmpty()) {
+        timeShare_ = other.timeShare_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -716,6 +774,75 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       content_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object timeShare_ = "";
+    /**
+     * <code>string timeShare = 4;</code>
+     */
+    public java.lang.String getTimeShare() {
+      java.lang.Object ref = timeShare_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        timeShare_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string timeShare = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getTimeShareBytes() {
+      java.lang.Object ref = timeShare_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        timeShare_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string timeShare = 4;</code>
+     */
+    public Builder setTimeShare(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      timeShare_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string timeShare = 4;</code>
+     */
+    public Builder clearTimeShare() {
+      
+      timeShare_ = getDefaultInstance().getTimeShare();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string timeShare = 4;</code>
+     */
+    public Builder setTimeShareBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      timeShare_ = value;
       onChanged();
       return this;
     }

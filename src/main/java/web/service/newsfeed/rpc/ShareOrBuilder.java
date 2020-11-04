@@ -36,4 +36,14 @@ public interface ShareOrBuilder extends
    */
   com.google.protobuf.ByteString
       getContentBytes();
+
+  /**
+   * <code>string timeShare = 4;</code>
+   */
+  java.lang.String getTimeShare();
+  /**
+   * <code>string timeShare = 4;</code>
+   */
+  com.google.protobuf.ByteString
+      getTimeShareBytes();
 }

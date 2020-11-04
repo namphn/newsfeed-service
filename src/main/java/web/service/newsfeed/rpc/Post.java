@@ -23,6 +23,7 @@ private static final long serialVersionUID = 0L;
     likes_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     shares_ = java.util.Collections.emptyList();
     images_ = "";
+    postTime_ = "";
   }
 
   @java.lang.Override
@@ -105,6 +106,12 @@ private static final long serialVersionUID = 0L;
             java.lang.String s = input.readStringRequireUtf8();
 
             images_ = s;
+            break;
+          }
+          case 66: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            postTime_ = s;
             break;
           }
         }
@@ -376,6 +383,40 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int POSTTIME_FIELD_NUMBER = 8;
+  private volatile java.lang.Object postTime_;
+  /**
+   * <code>string postTime = 8;</code>
+   */
+  public java.lang.String getPostTime() {
+    java.lang.Object ref = postTime_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      postTime_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string postTime = 8;</code>
+   */
+  public com.google.protobuf.ByteString
+      getPostTimeBytes() {
+    java.lang.Object ref = postTime_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      postTime_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -408,6 +449,9 @@ private static final long serialVersionUID = 0L;
     }
     if (!getImagesBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 7, images_);
+    }
+    if (!getPostTimeBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 8, postTime_);
     }
     unknownFields.writeTo(output);
   }
@@ -445,6 +489,9 @@ private static final long serialVersionUID = 0L;
     if (!getImagesBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, images_);
     }
+    if (!getPostTimeBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, postTime_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -475,6 +522,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getSharesList());
     result = result && getImages()
         .equals(other.getImages());
+    result = result && getPostTime()
+        .equals(other.getPostTime());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -506,6 +555,8 @@ private static final long serialVersionUID = 0L;
     }
     hash = (37 * hash) + IMAGES_FIELD_NUMBER;
     hash = (53 * hash) + getImages().hashCode();
+    hash = (37 * hash) + POSTTIME_FIELD_NUMBER;
+    hash = (53 * hash) + getPostTime().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -659,6 +710,8 @@ private static final long serialVersionUID = 0L;
       }
       images_ = "";
 
+      postTime_ = "";
+
       return this;
     }
 
@@ -710,6 +763,7 @@ private static final long serialVersionUID = 0L;
         result.shares_ = sharesBuilder_.build();
       }
       result.images_ = images_;
+      result.postTime_ = postTime_;
       result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
@@ -828,6 +882,10 @@ private static final long serialVersionUID = 0L;
       }
       if (!other.getImages().isEmpty()) {
         images_ = other.images_;
+        onChanged();
+      }
+      if (!other.getPostTime().isEmpty()) {
+        postTime_ = other.postTime_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -1704,6 +1762,75 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       images_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object postTime_ = "";
+    /**
+     * <code>string postTime = 8;</code>
+     */
+    public java.lang.String getPostTime() {
+      java.lang.Object ref = postTime_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        postTime_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string postTime = 8;</code>
+     */
+    public com.google.protobuf.ByteString
+        getPostTimeBytes() {
+      java.lang.Object ref = postTime_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        postTime_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string postTime = 8;</code>
+     */
+    public Builder setPostTime(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      postTime_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string postTime = 8;</code>
+     */
+    public Builder clearPostTime() {
+      
+      postTime_ = getDefaultInstance().getPostTime();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string postTime = 8;</code>
+     */
+    public Builder setPostTimeBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      postTime_ = value;
       onChanged();
       return this;
     }

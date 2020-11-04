@@ -24,6 +24,16 @@ public final class User {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_GetUserAvatarResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_AddNewImageRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_AddNewImageRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_AddNewImageResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_AddNewImageResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -35,10 +45,14 @@ public final class User {
     java.lang.String[] descriptorData = {
       "\n\nuser.proto\"&\n\024GetUserAvatarRequest\022\016\n\006" +
       "userId\030\001 \001(\t\"\'\n\025GetUserAvatarResponse\022\016\n" +
-      "\006avatar\030\001 \001(\t2M\n\013UserService\022>\n\rgetUserA" +
-      "vatar\022\025.GetUserAvatarRequest\032\026.GetUserAv" +
-      "atarResponseB\037\n\030web.service.newsfeed.rpc" +
-      "P\001\210\001\001b\006proto3"
+      "\006avatar\030\001 \001(\t\"3\n\022AddNewImageRequest\022\r\n\005i" +
+      "mage\030\001 \001(\t\022\016\n\006userId\030\002 \001(\t\"&\n\023AddNewImag" +
+      "eResponse\022\017\n\007success\030\001 \001(\0102\207\001\n\013UserServi" +
+      "ce\022>\n\rgetUserAvatar\022\025.GetUserAvatarReque" +
+      "st\032\026.GetUserAvatarResponse\0228\n\013addNewImag" +
+      "e\022\023.AddNewImageRequest\032\024.AddNewImageResp" +
+      "onseB\037\n\030web.service.newsfeed.rpcP\001\210\001\001b\006p" +
+      "roto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -64,6 +78,18 @@ public final class User {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_GetUserAvatarResponse_descriptor,
         new java.lang.String[] { "Avatar", });
+    internal_static_AddNewImageRequest_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_AddNewImageRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_AddNewImageRequest_descriptor,
+        new java.lang.String[] { "Image", "UserId", });
+    internal_static_AddNewImageResponse_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_AddNewImageResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_AddNewImageResponse_descriptor,
+        new java.lang.String[] { "Success", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

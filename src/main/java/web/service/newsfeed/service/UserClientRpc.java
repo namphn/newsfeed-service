@@ -4,9 +4,7 @@ import io.grpc.ManagedChannel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import web.service.newsfeed.rpc.GetUserAvatarRequest;
-import web.service.newsfeed.rpc.GetUserAvatarResponse;
-import web.service.newsfeed.rpc.UserServiceGrpc;
+import web.service.newsfeed.rpc.*;
 
 @Service
 public class UserClientRpc {
@@ -25,5 +23,19 @@ public class UserClientRpc {
             return null;
         }
         return response.getAvatar();
+    }
+
+    public boolean addNewImage(String userId, String image) {
+        AddNewImageRequest.Builder request = AddNewImageRequest.newBuilder();
+        request.setUserId(userId);
+        request.setImage(image);
+        UserServiceGrpc.UserServiceBlockingStub stub = UserServiceGrpc.newBlockingStub(channel);
+        AddNewImageResponse response = null;
+        try {
+            response = stub.addNewImage(request.build());
+        } catch (Exception e) {
+            return false;
+        }
+        return (response != null && response.getSuccess());
     }
 }
