@@ -89,6 +89,31 @@ public final class Newsfeed {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_TagResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_GetNewsGroupRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_GetNewsGroupRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_GetNewsGroupResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_GetNewsGroupResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_GetUserPostListRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_GetUserPostListRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_GetUserPostListResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_GetUserPostListResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_UserPotsInfo_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_UserPotsInfo_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -122,15 +147,23 @@ public final class Newsfeed {
       "ontent\030\003 \001(\t\"!\n\017CommentResponse\022\016\n\006statu" +
       "s\030\001 \001(\t\",\n\nTagRequest\022\016\n\006userId\030\001 \001(\t\022\016\n" +
       "\006postId\030\002 \001(\t\"\035\n\013TagResponse\022\016\n\006status\030\001" +
-      " \001(\t2\224\002\n\017NewsFeedService\0228\n\013getNewsFeed\022" +
-      "\023.GetNewsFeedRequest\032\024.GetNewsFeedRespon" +
-      "se\022*\n\013saveNewPost\022\005.Post\032\024.SaveNewPostRe" +
-      "sponse\022#\n\004like\022\014.LikeRequest\032\r.LikeRespo" +
-      "nse\022&\n\005share\022\r.ShareRequest\032\016.ShareRespo" +
-      "nse\022,\n\007comment\022\017.CommentRequest\032\020.Commen" +
-      "tResponse\022 \n\003tag\022\013.TagRequest\032\014.TagRespo" +
-      "nseB\037\n\030web.service.newsfeed.rpcP\001\210\001\001b\006pr" +
-      "oto3"
+      " \001(\t\"%\n\023GetNewsGroupRequest\022\016\n\006userId\030\001 " +
+      "\001(\t\")\n\024GetNewsGroupResponse\022\021\n\tnewsgroup" +
+      "\030\001 \001(\t\"(\n\026GetUserPostListRequest\022\016\n\006user" +
+      "Id\030\001 \001(\t\"7\n\027GetUserPostListResponse\022\034\n\005p" +
+      "osts\030\001 \003(\0132\r.UserPotsInfo\"-\n\014UserPotsInf" +
+      "o\022\016\n\006postId\030\001 \001(\t\022\r\n\005image\030\002 \001(\t2\223\003\n\017New" +
+      "sFeedService\0228\n\013getNewsFeed\022\023.GetNewsFee" +
+      "dRequest\032\024.GetNewsFeedResponse\022*\n\013saveNe" +
+      "wPost\022\005.Post\032\024.SaveNewPostResponse\022#\n\004li" +
+      "ke\022\014.LikeRequest\032\r.LikeResponse\022&\n\005share" +
+      "\022\r.ShareRequest\032\016.ShareResponse\022,\n\007comme" +
+      "nt\022\017.CommentRequest\032\020.CommentResponse\022 \n" +
+      "\003tag\022\013.TagRequest\032\014.TagResponse\022;\n\014getNe" +
+      "wsGroup\022\024.GetNewsGroupRequest\032\025.GetNewsG" +
+      "roupResponse\022@\n\013getFollower\022\027.GetUserPos" +
+      "tListRequest\032\030.GetUserPostListResponseB\037" +
+      "\n\030web.service.newsfeed.rpcP\001\210\001\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -235,6 +268,36 @@ public final class Newsfeed {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_TagResponse_descriptor,
         new java.lang.String[] { "Status", });
+    internal_static_GetNewsGroupRequest_descriptor =
+      getDescriptor().getMessageTypes().get(15);
+    internal_static_GetNewsGroupRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_GetNewsGroupRequest_descriptor,
+        new java.lang.String[] { "UserId", });
+    internal_static_GetNewsGroupResponse_descriptor =
+      getDescriptor().getMessageTypes().get(16);
+    internal_static_GetNewsGroupResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_GetNewsGroupResponse_descriptor,
+        new java.lang.String[] { "Newsgroup", });
+    internal_static_GetUserPostListRequest_descriptor =
+      getDescriptor().getMessageTypes().get(17);
+    internal_static_GetUserPostListRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_GetUserPostListRequest_descriptor,
+        new java.lang.String[] { "UserId", });
+    internal_static_GetUserPostListResponse_descriptor =
+      getDescriptor().getMessageTypes().get(18);
+    internal_static_GetUserPostListResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_GetUserPostListResponse_descriptor,
+        new java.lang.String[] { "Posts", });
+    internal_static_UserPotsInfo_descriptor =
+      getDescriptor().getMessageTypes().get(19);
+    internal_static_UserPotsInfo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_UserPotsInfo_descriptor,
+        new java.lang.String[] { "PostId", "Image", });
     com.google.protobuf.TimestampProto.getDescriptor();
   }
 

@@ -42,4 +42,15 @@ public class NewsFeedServiceGrpcImpl extends NewsFeedServiceGrpc.NewsFeedService
     public void tag(TagRequest request, StreamObserver<TagResponse> responseObserver) {
         super.tag(request, responseObserver);
     }
+
+    @Override
+    public void getNewsGroup(GetNewsGroupRequest request, StreamObserver<GetNewsGroupResponse> responseObserver) {
+        super.getNewsGroup(request, responseObserver);
+    }
+
+    @Override
+    public void getFollower(GetUserPostListRequest request, StreamObserver<GetUserPostListResponse> responseObserver) {
+        responseObserver.onNext(newsFeedService.getUserPostList(request));
+        responseObserver.onCompleted();
+    }
 }

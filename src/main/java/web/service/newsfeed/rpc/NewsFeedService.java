@@ -59,6 +59,22 @@ public  abstract class NewsFeedService
         web.service.newsfeed.rpc.TagRequest request,
         com.google.protobuf.RpcCallback<web.service.newsfeed.rpc.TagResponse> done);
 
+    /**
+     * <code>rpc getNewsGroup(.GetNewsGroupRequest) returns (.GetNewsGroupResponse);</code>
+     */
+    public abstract void getNewsGroup(
+        com.google.protobuf.RpcController controller,
+        web.service.newsfeed.rpc.GetNewsGroupRequest request,
+        com.google.protobuf.RpcCallback<web.service.newsfeed.rpc.GetNewsGroupResponse> done);
+
+    /**
+     * <code>rpc getFollower(.GetUserPostListRequest) returns (.GetUserPostListResponse);</code>
+     */
+    public abstract void getFollower(
+        com.google.protobuf.RpcController controller,
+        web.service.newsfeed.rpc.GetUserPostListRequest request,
+        com.google.protobuf.RpcCallback<web.service.newsfeed.rpc.GetUserPostListResponse> done);
+
   }
 
   public static com.google.protobuf.Service newReflectiveService(
@@ -112,6 +128,22 @@ public  abstract class NewsFeedService
         impl.tag(controller, request, done);
       }
 
+      @java.lang.Override
+      public  void getNewsGroup(
+          com.google.protobuf.RpcController controller,
+          web.service.newsfeed.rpc.GetNewsGroupRequest request,
+          com.google.protobuf.RpcCallback<web.service.newsfeed.rpc.GetNewsGroupResponse> done) {
+        impl.getNewsGroup(controller, request, done);
+      }
+
+      @java.lang.Override
+      public  void getFollower(
+          com.google.protobuf.RpcController controller,
+          web.service.newsfeed.rpc.GetUserPostListRequest request,
+          com.google.protobuf.RpcCallback<web.service.newsfeed.rpc.GetUserPostListResponse> done) {
+        impl.getFollower(controller, request, done);
+      }
+
     };
   }
 
@@ -146,6 +178,10 @@ public  abstract class NewsFeedService
             return impl.comment(controller, (web.service.newsfeed.rpc.CommentRequest)request);
           case 5:
             return impl.tag(controller, (web.service.newsfeed.rpc.TagRequest)request);
+          case 6:
+            return impl.getNewsGroup(controller, (web.service.newsfeed.rpc.GetNewsGroupRequest)request);
+          case 7:
+            return impl.getFollower(controller, (web.service.newsfeed.rpc.GetUserPostListRequest)request);
           default:
             throw new java.lang.AssertionError("Can't get here.");
         }
@@ -172,6 +208,10 @@ public  abstract class NewsFeedService
             return web.service.newsfeed.rpc.CommentRequest.getDefaultInstance();
           case 5:
             return web.service.newsfeed.rpc.TagRequest.getDefaultInstance();
+          case 6:
+            return web.service.newsfeed.rpc.GetNewsGroupRequest.getDefaultInstance();
+          case 7:
+            return web.service.newsfeed.rpc.GetUserPostListRequest.getDefaultInstance();
           default:
             throw new java.lang.AssertionError("Can't get here.");
         }
@@ -198,6 +238,10 @@ public  abstract class NewsFeedService
             return web.service.newsfeed.rpc.CommentResponse.getDefaultInstance();
           case 5:
             return web.service.newsfeed.rpc.TagResponse.getDefaultInstance();
+          case 6:
+            return web.service.newsfeed.rpc.GetNewsGroupResponse.getDefaultInstance();
+          case 7:
+            return web.service.newsfeed.rpc.GetUserPostListResponse.getDefaultInstance();
           default:
             throw new java.lang.AssertionError("Can't get here.");
         }
@@ -254,6 +298,22 @@ public  abstract class NewsFeedService
       web.service.newsfeed.rpc.TagRequest request,
       com.google.protobuf.RpcCallback<web.service.newsfeed.rpc.TagResponse> done);
 
+  /**
+   * <code>rpc getNewsGroup(.GetNewsGroupRequest) returns (.GetNewsGroupResponse);</code>
+   */
+  public abstract void getNewsGroup(
+      com.google.protobuf.RpcController controller,
+      web.service.newsfeed.rpc.GetNewsGroupRequest request,
+      com.google.protobuf.RpcCallback<web.service.newsfeed.rpc.GetNewsGroupResponse> done);
+
+  /**
+   * <code>rpc getFollower(.GetUserPostListRequest) returns (.GetUserPostListResponse);</code>
+   */
+  public abstract void getFollower(
+      com.google.protobuf.RpcController controller,
+      web.service.newsfeed.rpc.GetUserPostListRequest request,
+      com.google.protobuf.RpcCallback<web.service.newsfeed.rpc.GetUserPostListResponse> done);
+
   public static final
       com.google.protobuf.Descriptors.ServiceDescriptor
       getDescriptor() {
@@ -306,6 +366,16 @@ public  abstract class NewsFeedService
           com.google.protobuf.RpcUtil.<web.service.newsfeed.rpc.TagResponse>specializeCallback(
             done));
         return;
+      case 6:
+        this.getNewsGroup(controller, (web.service.newsfeed.rpc.GetNewsGroupRequest)request,
+          com.google.protobuf.RpcUtil.<web.service.newsfeed.rpc.GetNewsGroupResponse>specializeCallback(
+            done));
+        return;
+      case 7:
+        this.getFollower(controller, (web.service.newsfeed.rpc.GetUserPostListRequest)request,
+          com.google.protobuf.RpcUtil.<web.service.newsfeed.rpc.GetUserPostListResponse>specializeCallback(
+            done));
+        return;
       default:
         throw new java.lang.AssertionError("Can't get here.");
     }
@@ -332,6 +402,10 @@ public  abstract class NewsFeedService
         return web.service.newsfeed.rpc.CommentRequest.getDefaultInstance();
       case 5:
         return web.service.newsfeed.rpc.TagRequest.getDefaultInstance();
+      case 6:
+        return web.service.newsfeed.rpc.GetNewsGroupRequest.getDefaultInstance();
+      case 7:
+        return web.service.newsfeed.rpc.GetUserPostListRequest.getDefaultInstance();
       default:
         throw new java.lang.AssertionError("Can't get here.");
     }
@@ -358,6 +432,10 @@ public  abstract class NewsFeedService
         return web.service.newsfeed.rpc.CommentResponse.getDefaultInstance();
       case 5:
         return web.service.newsfeed.rpc.TagResponse.getDefaultInstance();
+      case 6:
+        return web.service.newsfeed.rpc.GetNewsGroupResponse.getDefaultInstance();
+      case 7:
+        return web.service.newsfeed.rpc.GetUserPostListResponse.getDefaultInstance();
       default:
         throw new java.lang.AssertionError("Can't get here.");
     }
@@ -468,6 +546,36 @@ public  abstract class NewsFeedService
           web.service.newsfeed.rpc.TagResponse.class,
           web.service.newsfeed.rpc.TagResponse.getDefaultInstance()));
     }
+
+    public  void getNewsGroup(
+        com.google.protobuf.RpcController controller,
+        web.service.newsfeed.rpc.GetNewsGroupRequest request,
+        com.google.protobuf.RpcCallback<web.service.newsfeed.rpc.GetNewsGroupResponse> done) {
+      channel.callMethod(
+        getDescriptor().getMethods().get(6),
+        controller,
+        request,
+        web.service.newsfeed.rpc.GetNewsGroupResponse.getDefaultInstance(),
+        com.google.protobuf.RpcUtil.generalizeCallback(
+          done,
+          web.service.newsfeed.rpc.GetNewsGroupResponse.class,
+          web.service.newsfeed.rpc.GetNewsGroupResponse.getDefaultInstance()));
+    }
+
+    public  void getFollower(
+        com.google.protobuf.RpcController controller,
+        web.service.newsfeed.rpc.GetUserPostListRequest request,
+        com.google.protobuf.RpcCallback<web.service.newsfeed.rpc.GetUserPostListResponse> done) {
+      channel.callMethod(
+        getDescriptor().getMethods().get(7),
+        controller,
+        request,
+        web.service.newsfeed.rpc.GetUserPostListResponse.getDefaultInstance(),
+        com.google.protobuf.RpcUtil.generalizeCallback(
+          done,
+          web.service.newsfeed.rpc.GetUserPostListResponse.class,
+          web.service.newsfeed.rpc.GetUserPostListResponse.getDefaultInstance()));
+    }
   }
 
   public static BlockingInterface newBlockingStub(
@@ -504,6 +612,16 @@ public  abstract class NewsFeedService
     public web.service.newsfeed.rpc.TagResponse tag(
         com.google.protobuf.RpcController controller,
         web.service.newsfeed.rpc.TagRequest request)
+        throws com.google.protobuf.ServiceException;
+
+    public web.service.newsfeed.rpc.GetNewsGroupResponse getNewsGroup(
+        com.google.protobuf.RpcController controller,
+        web.service.newsfeed.rpc.GetNewsGroupRequest request)
+        throws com.google.protobuf.ServiceException;
+
+    public web.service.newsfeed.rpc.GetUserPostListResponse getFollower(
+        com.google.protobuf.RpcController controller,
+        web.service.newsfeed.rpc.GetUserPostListRequest request)
         throws com.google.protobuf.ServiceException;
   }
 
@@ -583,6 +701,30 @@ public  abstract class NewsFeedService
         controller,
         request,
         web.service.newsfeed.rpc.TagResponse.getDefaultInstance());
+    }
+
+
+    public web.service.newsfeed.rpc.GetNewsGroupResponse getNewsGroup(
+        com.google.protobuf.RpcController controller,
+        web.service.newsfeed.rpc.GetNewsGroupRequest request)
+        throws com.google.protobuf.ServiceException {
+      return (web.service.newsfeed.rpc.GetNewsGroupResponse) channel.callBlockingMethod(
+        getDescriptor().getMethods().get(6),
+        controller,
+        request,
+        web.service.newsfeed.rpc.GetNewsGroupResponse.getDefaultInstance());
+    }
+
+
+    public web.service.newsfeed.rpc.GetUserPostListResponse getFollower(
+        com.google.protobuf.RpcController controller,
+        web.service.newsfeed.rpc.GetUserPostListRequest request)
+        throws com.google.protobuf.ServiceException {
+      return (web.service.newsfeed.rpc.GetUserPostListResponse) channel.callBlockingMethod(
+        getDescriptor().getMethods().get(7),
+        controller,
+        request,
+        web.service.newsfeed.rpc.GetUserPostListResponse.getDefaultInstance());
     }
 
   }
