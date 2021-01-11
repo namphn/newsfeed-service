@@ -34,4 +34,22 @@ public class FollowClientRpc {
 
         return friends;
     }
+
+    public List<String> getFollowing(String userId) {
+        if(userId == null || userId.isEmpty()) throw new NullPointerException();
+        List<String> followers = new ArrayList<>();
+        GetFollowingResponse response = null;
+        FollowRpcServiceGrpc.FollowRpcServiceBlockingStub stub = FollowRpcServiceGrpc.newBlockingStub(channel);
+        GetFollowerAndFollowingRequest .Builder request = GetFollowerAndFollowingRequest.newBuilder();
+        request.setUserId(userId);
+
+        try {
+            response = stub.getFollowing(request.build());
+            followers.addAll(response.getFollowingList());
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return followers;
+    }
 }

@@ -219,6 +219,70 @@ public final class NewsFeedServiceGrpc {
      return getTagMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<web.service.newsfeed.rpc.GetNewsGroupRequest,
+      web.service.newsfeed.rpc.GetNewsGroupResponse> getGetNewsGroupMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "getNewsGroup",
+      requestType = web.service.newsfeed.rpc.GetNewsGroupRequest.class,
+      responseType = web.service.newsfeed.rpc.GetNewsGroupResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<web.service.newsfeed.rpc.GetNewsGroupRequest,
+      web.service.newsfeed.rpc.GetNewsGroupResponse> getGetNewsGroupMethod() {
+    io.grpc.MethodDescriptor<web.service.newsfeed.rpc.GetNewsGroupRequest, web.service.newsfeed.rpc.GetNewsGroupResponse> getGetNewsGroupMethod;
+    if ((getGetNewsGroupMethod = NewsFeedServiceGrpc.getGetNewsGroupMethod) == null) {
+      synchronized (NewsFeedServiceGrpc.class) {
+        if ((getGetNewsGroupMethod = NewsFeedServiceGrpc.getGetNewsGroupMethod) == null) {
+          NewsFeedServiceGrpc.getGetNewsGroupMethod = getGetNewsGroupMethod = 
+              io.grpc.MethodDescriptor.<web.service.newsfeed.rpc.GetNewsGroupRequest, web.service.newsfeed.rpc.GetNewsGroupResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "NewsFeedService", "getNewsGroup"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  web.service.newsfeed.rpc.GetNewsGroupRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  web.service.newsfeed.rpc.GetNewsGroupResponse.getDefaultInstance()))
+                  .setSchemaDescriptor(new NewsFeedServiceMethodDescriptorSupplier("getNewsGroup"))
+                  .build();
+          }
+        }
+     }
+     return getGetNewsGroupMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<web.service.newsfeed.rpc.GetUserPostListRequest,
+      web.service.newsfeed.rpc.GetUserPostListResponse> getGetFollowerMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "getFollower",
+      requestType = web.service.newsfeed.rpc.GetUserPostListRequest.class,
+      responseType = web.service.newsfeed.rpc.GetUserPostListResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<web.service.newsfeed.rpc.GetUserPostListRequest,
+      web.service.newsfeed.rpc.GetUserPostListResponse> getGetFollowerMethod() {
+    io.grpc.MethodDescriptor<web.service.newsfeed.rpc.GetUserPostListRequest, web.service.newsfeed.rpc.GetUserPostListResponse> getGetFollowerMethod;
+    if ((getGetFollowerMethod = NewsFeedServiceGrpc.getGetFollowerMethod) == null) {
+      synchronized (NewsFeedServiceGrpc.class) {
+        if ((getGetFollowerMethod = NewsFeedServiceGrpc.getGetFollowerMethod) == null) {
+          NewsFeedServiceGrpc.getGetFollowerMethod = getGetFollowerMethod = 
+              io.grpc.MethodDescriptor.<web.service.newsfeed.rpc.GetUserPostListRequest, web.service.newsfeed.rpc.GetUserPostListResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "NewsFeedService", "getFollower"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  web.service.newsfeed.rpc.GetUserPostListRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  web.service.newsfeed.rpc.GetUserPostListResponse.getDefaultInstance()))
+                  .setSchemaDescriptor(new NewsFeedServiceMethodDescriptorSupplier("getFollower"))
+                  .build();
+          }
+        }
+     }
+     return getGetFollowerMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -288,6 +352,20 @@ public final class NewsFeedServiceGrpc {
       asyncUnimplementedUnaryCall(getTagMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void getNewsGroup(web.service.newsfeed.rpc.GetNewsGroupRequest request,
+        io.grpc.stub.StreamObserver<web.service.newsfeed.rpc.GetNewsGroupResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(getGetNewsGroupMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public void getFollower(web.service.newsfeed.rpc.GetUserPostListRequest request,
+        io.grpc.stub.StreamObserver<web.service.newsfeed.rpc.GetUserPostListResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(getGetFollowerMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -332,6 +410,20 @@ public final class NewsFeedServiceGrpc {
                 web.service.newsfeed.rpc.TagRequest,
                 web.service.newsfeed.rpc.TagResponse>(
                   this, METHODID_TAG)))
+          .addMethod(
+            getGetNewsGroupMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                web.service.newsfeed.rpc.GetNewsGroupRequest,
+                web.service.newsfeed.rpc.GetNewsGroupResponse>(
+                  this, METHODID_GET_NEWS_GROUP)))
+          .addMethod(
+            getGetFollowerMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                web.service.newsfeed.rpc.GetUserPostListRequest,
+                web.service.newsfeed.rpc.GetUserPostListResponse>(
+                  this, METHODID_GET_FOLLOWER)))
           .build();
     }
   }
@@ -401,6 +493,22 @@ public final class NewsFeedServiceGrpc {
       asyncUnaryCall(
           getChannel().newCall(getTagMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void getNewsGroup(web.service.newsfeed.rpc.GetNewsGroupRequest request,
+        io.grpc.stub.StreamObserver<web.service.newsfeed.rpc.GetNewsGroupResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getGetNewsGroupMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void getFollower(web.service.newsfeed.rpc.GetUserPostListRequest request,
+        io.grpc.stub.StreamObserver<web.service.newsfeed.rpc.GetUserPostListResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getGetFollowerMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -461,6 +569,20 @@ public final class NewsFeedServiceGrpc {
     public web.service.newsfeed.rpc.TagResponse tag(web.service.newsfeed.rpc.TagRequest request) {
       return blockingUnaryCall(
           getChannel(), getTagMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public web.service.newsfeed.rpc.GetNewsGroupResponse getNewsGroup(web.service.newsfeed.rpc.GetNewsGroupRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getGetNewsGroupMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public web.service.newsfeed.rpc.GetUserPostListResponse getFollower(web.service.newsfeed.rpc.GetUserPostListRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getGetFollowerMethod(), getCallOptions(), request);
     }
   }
 
@@ -529,6 +651,22 @@ public final class NewsFeedServiceGrpc {
       return futureUnaryCall(
           getChannel().newCall(getTagMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<web.service.newsfeed.rpc.GetNewsGroupResponse> getNewsGroup(
+        web.service.newsfeed.rpc.GetNewsGroupRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getGetNewsGroupMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<web.service.newsfeed.rpc.GetUserPostListResponse> getFollower(
+        web.service.newsfeed.rpc.GetUserPostListRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getGetFollowerMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_GET_NEWS_FEED = 0;
@@ -537,6 +675,8 @@ public final class NewsFeedServiceGrpc {
   private static final int METHODID_SHARE = 3;
   private static final int METHODID_COMMENT = 4;
   private static final int METHODID_TAG = 5;
+  private static final int METHODID_GET_NEWS_GROUP = 6;
+  private static final int METHODID_GET_FOLLOWER = 7;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -578,6 +718,14 @@ public final class NewsFeedServiceGrpc {
         case METHODID_TAG:
           serviceImpl.tag((web.service.newsfeed.rpc.TagRequest) request,
               (io.grpc.stub.StreamObserver<web.service.newsfeed.rpc.TagResponse>) responseObserver);
+          break;
+        case METHODID_GET_NEWS_GROUP:
+          serviceImpl.getNewsGroup((web.service.newsfeed.rpc.GetNewsGroupRequest) request,
+              (io.grpc.stub.StreamObserver<web.service.newsfeed.rpc.GetNewsGroupResponse>) responseObserver);
+          break;
+        case METHODID_GET_FOLLOWER:
+          serviceImpl.getFollower((web.service.newsfeed.rpc.GetUserPostListRequest) request,
+              (io.grpc.stub.StreamObserver<web.service.newsfeed.rpc.GetUserPostListResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -646,6 +794,8 @@ public final class NewsFeedServiceGrpc {
               .addMethod(getShareMethod())
               .addMethod(getCommentMethod())
               .addMethod(getTagMethod())
+              .addMethod(getGetNewsGroupMethod())
+              .addMethod(getGetFollowerMethod())
               .build();
         }
       }

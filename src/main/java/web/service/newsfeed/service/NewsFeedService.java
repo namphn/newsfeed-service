@@ -113,4 +113,29 @@ public class NewsFeedService {
         else response.setStatus(Status.CAN_NOT_SAVE);
         return response.build();
     }
+
+    /**
+     * get group socket
+     * @param request
+     * @return
+     */
+//    public GetNewsGroupResponse getNewsGroup(GetNewsFeedRequest request) {
+//        String userId = request.getUserId();
+//
+//        List<String> followers = followClientRpc.getFollowing(request.getUserId());
+//    }
+    public GetUserPostListResponse getUserPostList(GetUserPostListRequest request) {
+        String userId = request.getUserId();
+
+        List<Post> postList = postRepository.getAllByUserIdAndOrderByPostTime(userId);
+        GetUserPostListResponse.Builder response = GetUserPostListResponse.newBuilder();
+        postList.stream().forEach(post -> {
+            UserPotsInfo.Builder postInfo = UserPotsInfo.newBuilder();
+            postInfo.setPostId(post.getId());
+            postInfo.setImage(post.getImages());
+            response.addPosts(postInfo.build());
+        });
+
+        return response.build();
+    }
 }
