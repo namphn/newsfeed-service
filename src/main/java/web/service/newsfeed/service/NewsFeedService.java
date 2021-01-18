@@ -31,7 +31,7 @@ public class NewsFeedService {
     }
 
     private web.service.newsfeed.rpc.Post getNewPostUser(String userId) {
-        Post post = postRepository.getFirstByUserIdOrderByPostTimeDesc(userId);
+        Post post = postRepository.findFirstByUserIdOrderByPostTimeDesc(userId);
         if(post != null) {
             web.service.newsfeed.rpc.Post.Builder rpcPost = web.service.newsfeed.rpc.Post.newBuilder();
             List<Comment> allComments = new ArrayList<>();
@@ -127,7 +127,7 @@ public class NewsFeedService {
     public GetUserPostListResponse getUserPostList(GetUserPostListRequest request) {
         String userId = request.getUserId();
 
-        List<Post> postList = postRepository.getAllByUserIdAndOrderByPostTime(userId);
+        List<Post> postList = postRepository.findByUserIdOrderByPostTimeDesc(userId);
         GetUserPostListResponse.Builder response = GetUserPostListResponse.newBuilder();
         postList.stream().forEach(post -> {
             UserPotsInfo.Builder postInfo = UserPotsInfo.newBuilder();
