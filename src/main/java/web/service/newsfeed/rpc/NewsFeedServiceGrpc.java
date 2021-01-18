@@ -283,6 +283,38 @@ public final class NewsFeedServiceGrpc {
      return getGetFollowerMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<web.service.newsfeed.rpc.GetUserPostListRequest,
+      web.service.newsfeed.rpc.GetUserPostListResponse> getGetUserPostListMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "getUserPostList",
+      requestType = web.service.newsfeed.rpc.GetUserPostListRequest.class,
+      responseType = web.service.newsfeed.rpc.GetUserPostListResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<web.service.newsfeed.rpc.GetUserPostListRequest,
+      web.service.newsfeed.rpc.GetUserPostListResponse> getGetUserPostListMethod() {
+    io.grpc.MethodDescriptor<web.service.newsfeed.rpc.GetUserPostListRequest, web.service.newsfeed.rpc.GetUserPostListResponse> getGetUserPostListMethod;
+    if ((getGetUserPostListMethod = NewsFeedServiceGrpc.getGetUserPostListMethod) == null) {
+      synchronized (NewsFeedServiceGrpc.class) {
+        if ((getGetUserPostListMethod = NewsFeedServiceGrpc.getGetUserPostListMethod) == null) {
+          NewsFeedServiceGrpc.getGetUserPostListMethod = getGetUserPostListMethod = 
+              io.grpc.MethodDescriptor.<web.service.newsfeed.rpc.GetUserPostListRequest, web.service.newsfeed.rpc.GetUserPostListResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "NewsFeedService", "getUserPostList"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  web.service.newsfeed.rpc.GetUserPostListRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  web.service.newsfeed.rpc.GetUserPostListResponse.getDefaultInstance()))
+                  .setSchemaDescriptor(new NewsFeedServiceMethodDescriptorSupplier("getUserPostList"))
+                  .build();
+          }
+        }
+     }
+     return getGetUserPostListMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -366,6 +398,13 @@ public final class NewsFeedServiceGrpc {
       asyncUnimplementedUnaryCall(getGetFollowerMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void getUserPostList(web.service.newsfeed.rpc.GetUserPostListRequest request,
+        io.grpc.stub.StreamObserver<web.service.newsfeed.rpc.GetUserPostListResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(getGetUserPostListMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -424,6 +463,13 @@ public final class NewsFeedServiceGrpc {
                 web.service.newsfeed.rpc.GetUserPostListRequest,
                 web.service.newsfeed.rpc.GetUserPostListResponse>(
                   this, METHODID_GET_FOLLOWER)))
+          .addMethod(
+            getGetUserPostListMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                web.service.newsfeed.rpc.GetUserPostListRequest,
+                web.service.newsfeed.rpc.GetUserPostListResponse>(
+                  this, METHODID_GET_USER_POST_LIST)))
           .build();
     }
   }
@@ -509,6 +555,14 @@ public final class NewsFeedServiceGrpc {
       asyncUnaryCall(
           getChannel().newCall(getGetFollowerMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void getUserPostList(web.service.newsfeed.rpc.GetUserPostListRequest request,
+        io.grpc.stub.StreamObserver<web.service.newsfeed.rpc.GetUserPostListResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getGetUserPostListMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -583,6 +637,13 @@ public final class NewsFeedServiceGrpc {
     public web.service.newsfeed.rpc.GetUserPostListResponse getFollower(web.service.newsfeed.rpc.GetUserPostListRequest request) {
       return blockingUnaryCall(
           getChannel(), getGetFollowerMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public web.service.newsfeed.rpc.GetUserPostListResponse getUserPostList(web.service.newsfeed.rpc.GetUserPostListRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getGetUserPostListMethod(), getCallOptions(), request);
     }
   }
 
@@ -667,6 +728,14 @@ public final class NewsFeedServiceGrpc {
       return futureUnaryCall(
           getChannel().newCall(getGetFollowerMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<web.service.newsfeed.rpc.GetUserPostListResponse> getUserPostList(
+        web.service.newsfeed.rpc.GetUserPostListRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getGetUserPostListMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_GET_NEWS_FEED = 0;
@@ -677,6 +746,7 @@ public final class NewsFeedServiceGrpc {
   private static final int METHODID_TAG = 5;
   private static final int METHODID_GET_NEWS_GROUP = 6;
   private static final int METHODID_GET_FOLLOWER = 7;
+  private static final int METHODID_GET_USER_POST_LIST = 8;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -725,6 +795,10 @@ public final class NewsFeedServiceGrpc {
           break;
         case METHODID_GET_FOLLOWER:
           serviceImpl.getFollower((web.service.newsfeed.rpc.GetUserPostListRequest) request,
+              (io.grpc.stub.StreamObserver<web.service.newsfeed.rpc.GetUserPostListResponse>) responseObserver);
+          break;
+        case METHODID_GET_USER_POST_LIST:
+          serviceImpl.getUserPostList((web.service.newsfeed.rpc.GetUserPostListRequest) request,
               (io.grpc.stub.StreamObserver<web.service.newsfeed.rpc.GetUserPostListResponse>) responseObserver);
           break;
         default:
@@ -796,6 +870,7 @@ public final class NewsFeedServiceGrpc {
               .addMethod(getTagMethod())
               .addMethod(getGetNewsGroupMethod())
               .addMethod(getGetFollowerMethod())
+              .addMethod(getGetUserPostListMethod())
               .build();
         }
       }

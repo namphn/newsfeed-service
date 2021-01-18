@@ -152,7 +152,7 @@ public final class Newsfeed {
       "\030\001 \001(\t\"(\n\026GetUserPostListRequest\022\016\n\006user" +
       "Id\030\001 \001(\t\"7\n\027GetUserPostListResponse\022\034\n\005p" +
       "osts\030\001 \003(\0132\r.UserPotsInfo\"-\n\014UserPotsInf" +
-      "o\022\016\n\006postId\030\001 \001(\t\022\r\n\005image\030\002 \001(\t2\223\003\n\017New" +
+      "o\022\016\n\006postId\030\001 \001(\t\022\r\n\005image\030\002 \001(\t2\331\003\n\017New" +
       "sFeedService\0228\n\013getNewsFeed\022\023.GetNewsFee" +
       "dRequest\032\024.GetNewsFeedResponse\022*\n\013saveNe" +
       "wPost\022\005.Post\032\024.SaveNewPostResponse\022#\n\004li" +
@@ -162,8 +162,10 @@ public final class Newsfeed {
       "\003tag\022\013.TagRequest\032\014.TagResponse\022;\n\014getNe" +
       "wsGroup\022\024.GetNewsGroupRequest\032\025.GetNewsG" +
       "roupResponse\022@\n\013getFollower\022\027.GetUserPos" +
-      "tListRequest\032\030.GetUserPostListResponseB\037" +
-      "\n\030web.service.newsfeed.rpcP\001\210\001\001b\006proto3"
+      "tListRequest\032\030.GetUserPostListResponse\022D" +
+      "\n\017getUserPostList\022\027.GetUserPostListReque" +
+      "st\032\030.GetUserPostListResponseB\037\n\030web.serv" +
+      "ice.newsfeed.rpcP\001\210\001\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

@@ -117,6 +117,7 @@ service NewsFeedService {
   rpc tag (TagRequest) returns (TagResponse);
   rpc getNewsGroup (GetNewsGroupRequest) returns (GetNewsGroupResponse);
   rpc getFollower (GetUserPostListRequest) returns (GetUserPostListResponse);
+  rpc getUserPostList (GetUserPostListRequest) returns (GetUserPostListResponse);
 }
 
 
