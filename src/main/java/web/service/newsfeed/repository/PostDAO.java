@@ -4,22 +4,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.stereotype.Component;
-import web.service.newsfeed.model.NewsGroup;
+import web.service.newsfeed.model.Post;
+import java.util.List;
 
-@Component
-public class NewsGroupDAOC implements NewsGroupDAO {
+public class PostDAO implements IPostDAO {
     @Autowired
-    private MongoTemplate mongoTemplate;
-
-    public NewsGroupDAOC() {
-    }
+    MongoTemplate mongoTemplate;
 
     @Override
-    public NewsGroup getFirstByUserId(String userId) {
+    public List<Post> getAllPostByUserId(String userId) {
         Query query = new Query();
         query.addCriteria(Criteria.where("userId").is(userId));
-        NewsGroup group = (NewsGroup) mongoTemplate.find(query, NewsGroup.class);
-        return group;
+        List<Post> posts = mongoTemplate.find(query, Post.class);
+        return posts;
     }
 }

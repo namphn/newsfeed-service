@@ -3,6 +3,7 @@ package web.service.newsfeed.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -14,6 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Document
+@Getter
 public class Post {
     @Id
     private String id;
@@ -29,5 +31,4 @@ public class Post {
      * feature to update add tags
      */
 //    private List<String> tags;
-
 }
