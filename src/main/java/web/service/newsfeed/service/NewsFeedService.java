@@ -37,19 +37,22 @@ public class NewsFeedService {
             List<Comment> allComments = new ArrayList<>();
             List<Share> allShares = new ArrayList<>();
 
-            post.getComments().forEach(element ->
+            if(post.getComments() != null) post.getComments().forEach(element ->
                     allComments.add(commentRepository.getFirstByCommentId(element)));
-            post.getShares().forEach(element ->
+            if(post.getShares() != null) post.getShares().forEach(element ->
                     allShares.add(convertToRpcShare(sharesRepository.getFirstByShareId(element))));
+            String userAvatar = userClientRpc.getUserAvatarFromUserService(userId);
+            String userName = userClientRpc.getUserName(userId);
 
             rpcPost.addAllComments(convertToRpcCommentList(allComments));
-            rpcPost.setContent(post.getContent());
+            rpcPost.setContent(post.getContent() == null ? "" : post.getContent());
             rpcPost.setUserId(post.getUserId());
             rpcPost.setId(post.getId());
-            rpcPost.addAllLikes(post.getLikes());
+            rpcPost.addAllLikes(post.getLikes() == null ? new ArrayList<>() : post.getLikes());
             rpcPost.addAllShares(allShares);
-            rpcPost.setImages(post.getImages());
-
+            rpcPost.setImages(post.getImages() == null ? "" : post.getImages());
+            rpcPost.setUserAvatar(userAvatar);
+            rpcPost.setUserName(userName);
             return rpcPost.build();
         }
         return null;
@@ -67,7 +70,10 @@ public class NewsFeedService {
         List<web.service.newsfeed.rpc.Post> posts = new ArrayList<>();
         List<String> friends = followClientRpc.getFriends(request.getUserId());
 
-        friends.forEach(user -> posts.add(getNewPostUser(user)));
+        friends.forEach(user -> {
+            web.service.newsfeed.rpc.Post post = getNewPostUser(user);
+            if(post != null) posts.add(post);
+        });
 
         GetNewsFeedResponse.Builder response = GetNewsFeedResponse.newBuilder();
         response.addAllPosts(posts);
