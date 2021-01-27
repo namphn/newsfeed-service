@@ -53,4 +53,10 @@ public class NewsFeedServiceGrpcImpl extends NewsFeedServiceGrpc.NewsFeedService
         responseObserver.onNext(newsFeedService.getUserPostList(request));
         responseObserver.onCompleted();
     }
+
+    @Override
+    public void getUserPostList(GetUserPostListRequest request, StreamObserver<GetUserPostListResponse> responseObserver) {
+        responseObserver.onNext(newsFeedService.getUserPostList(request));
+        responseObserver.onCompleted();
+    }
 }

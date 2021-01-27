@@ -38,4 +38,23 @@ public class UserClientRpc {
         }
         return (response != null && response.getSuccess());
     }
+
+    public String getUserName(String userId) {
+        GetUserNameRequest.Builder request = GetUserNameRequest.newBuilder();
+        request.setUserId(userId);
+        GetUserNameResponse response = null;
+
+        UserServiceGrpc.UserServiceBlockingStub stub = UserServiceGrpc.newBlockingStub(channel);
+        try {
+            response = stub.getUserName(request.build());
+        } catch (Exception e) {
+            return null;
+        }
+
+        if(response != null) {
+            return response.getUserName();
+        }
+
+        return null;
+    }
 }
