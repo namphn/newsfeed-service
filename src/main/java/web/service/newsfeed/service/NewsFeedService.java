@@ -69,6 +69,7 @@ public class NewsFeedService {
     public GetNewsFeedResponse getNewsFeed(GetNewsFeedRequest request) {
         List<web.service.newsfeed.rpc.Post> posts = new ArrayList<>();
         List<String> friends = followClientRpc.getFriends(request.getUserId());
+        friends.add(request.getUserId());
 
         friends.forEach(user -> {
             web.service.newsfeed.rpc.Post post = getNewPostUser(user);
